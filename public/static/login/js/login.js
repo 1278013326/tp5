@@ -167,7 +167,7 @@ $(function(){
 			$(".log-btn").click(function(){
 				// var type = 'phone';
 				var inp = $.trim($('#num').val());
-				var pass = $.md5($.trim($('#pass').val()));
+				var pass = $.trim($('#pass').val());
 				if (checkAccount(inp) && checkPass(pass)) {
 					var ldata = {userinp:inp,password:pass};
 					if (!$('.code').hasClass('hide')) {
@@ -178,16 +178,16 @@ $(function(){
 						ldata.code = code;
 					}
 					$.ajax({
-			            url: '/dologin',
+			            url: "index.php/index/login/index",
 			            type: 'post',
-			            dataType: 'json',
+			            // dataType: 'json',
 			            async: true,
 			            data: ldata,
 			            success:function(data){
 			                if (data.code == '0') {
 			                    // globalTip({'msg':'登录成功!','setTime':3,'jump':true,'URL':'http://www.ui.cn'});
-			                    globalTip(data.msg);
-			                } else if(data.code == '2') {
+			                    alert(data.msg);
+			                } else if(data.code == '2') { //密码错误
 			                	$(".log-btn").off('click').addClass("off");
 			                    $('.pass-err').removeClass('hide').find('em').text(data.msg);
 			                    $('.pass-err').find('i').attr('class', 'icon-warn').css("color","#d9585b");
@@ -196,7 +196,7 @@ $(function(){
 			                    	$(this).attr('src', '/verifyCode?'+Math.random());
 			                    });;
 			                    return false;
-			                } else if(data.code == '3') {
+			                } else if(data.code == '3') { //验证码错误
 			                	$(".log-btn").off('click').addClass("off");
 			                    $('.img-err').removeClass('hide').find('em').text(data.msg);
 			                    $('.img-err').find('i').attr('class', 'icon-warn').css("color","#d9585b");
@@ -205,7 +205,7 @@ $(function(){
 			                    	$(this).attr('src', '/verifyCode?'+Math.random());
 			                    });
 			                    return false;
-			                } else if(data.code == '1'){
+			                } else if(data.code == '1'){ //用户名错误
 			                	$(".log-btn").off('click').addClass("off");
 			                	$('.num-err').removeClass('hide').find('em').text(data.msg);
 			                	$('.num-err').find('i').attr('class', 'icon-warn').css("color","#d9585b");
