@@ -35,7 +35,7 @@
                 <p class="p-input pos code hide">
                     <label for="veri">请输入验证码</label>
                     <input type="text" id="veri">
-                    <img src="index.php/index/login/getCode" onclick="javascript:this.src='index.php/index/login/getCode?tm='+Math.random();" />
+                    <img src="getCode" onclick="javascript:this.src='getCode?tm='+Math.random();" />
                     <span class="tel-warn img-err hide"><em>验证码错误，请重新输入</em><i class="icon-warn"></i></span>
                     <!-- <a href="javascript:;">换一换</a> -->
                 </p>
@@ -55,8 +55,8 @@
                 </p>
             </div>
             <div class="r-forget cl">
-                <a href="./reg.html" class="z">账号注册</a>
-                <a href="./getpass.html" class="y">忘记密码</a>
+                <a href="register" class="z">账号注册</a>
+                <a href="getpass" class="y">忘记密码</a>
             </div>
             <button class="lang-btn off log-btn">登录</button>
             <div class="third-party">
@@ -76,24 +76,3 @@
 </div>
 </body>
 </html>
-<!--<script src="/static/common/jquery-3.2.1.min.js"></script>-->
-<!--<script>-->
-<!--    $(document).on("click","#login",function(){-->
-<!--        var name = $('input[name="logname"]').val();-->
-<!--        var pwd = $('input[name="logpass"]').val();-->
-<!--        alert(name);return;-->
-<!--        $.ajax({-->
-<!--            type:"post",-->
-<!--            url:"{:url('login/index')}",-->
-<!--            data:{name:name,pwd:pwd},-->
-<!--            success:function(msg) {-->
-<!--                console.log(msg);return;-->
-<!--                if(msg==0) {-->
-<!--                    alert('登陆成功');-->
-<!--                } else {-->
-<!--                    alert('修改失败');-->
-<!--                }-->
-<!--            }-->
-<!--        })-->
-<!--    })-->
-<!--</script>-->

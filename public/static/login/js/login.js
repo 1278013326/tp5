@@ -177,8 +177,9 @@ $(function(){
 						}
 						ldata.code = code;
 					}
+					console.log(ldata);
 					$.ajax({
-			            url: "index.php/index/login/index",
+			            url: "index",
 			            type: 'post',
 			            // dataType: 'json',
 			            async: true,
@@ -186,14 +187,14 @@ $(function(){
 			            success:function(data){
 			                if (data.code == '0') {
 			                    // globalTip({'msg':'登录成功!','setTime':3,'jump':true,'URL':'http://www.ui.cn'});
-			                    alert(data.msg);
+								window.location.href="showlist";
 			                } else if(data.code == '2') { //密码错误
 			                	$(".log-btn").off('click').addClass("off");
 			                    $('.pass-err').removeClass('hide').find('em').text(data.msg);
 			                    $('.pass-err').find('i').attr('class', 'icon-warn').css("color","#d9585b");
 			                    $('.code').removeClass('hide');
-			                    $('.code').find('img').attr('src','/verifyCode?'+Math.random()).click(function(event) {
-			                    	$(this).attr('src', '/verifyCode?'+Math.random());
+			                    $('.code').find('img').attr('src','getCode?'+Math.random()).click(function(event) {
+			                    	$(this).attr('src', 'getCode?'+Math.random());
 			                    });;
 			                    return false;
 			                } else if(data.code == '3') { //验证码错误
@@ -201,8 +202,8 @@ $(function(){
 			                    $('.img-err').removeClass('hide').find('em').text(data.msg);
 			                    $('.img-err').find('i').attr('class', 'icon-warn').css("color","#d9585b");
 			                    $('.code').removeClass('hide');
-			                    $('.code').find('img').attr('src','/verifyCode?'+Math.random()).click(function(event) {
-			                    	$(this).attr('src', '/verifyCode?'+Math.random());
+			                    $('.code').find('img').attr('src','getCode?'+Math.random()).click(function(event) {
+			                    	$(this).attr('src', 'getCode?'+Math.random());
 			                    });
 			                    return false;
 			                } else if(data.code == '1'){ //用户名错误

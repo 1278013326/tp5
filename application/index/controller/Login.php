@@ -5,22 +5,15 @@ use app\index\controller\Base;
 use think\Db;
 use think\Request;
 use think\Controller;
+use think\Session;
 class Login extends Base
 {
-    public function getCode(){
-        import('Verification', EXTEND_PATH,'.php');
-        $obj = new  \ValidateCode();
-        $obj->doimg();
-        $_SESSION['code'] = $obj->getCode();//验证码保存到SESSION中
-
-    }
+    /*
+     * 登录
+     */
     public function index()
     {
         if($this->request->isPost()){
-            //接值
-//            1、print_r($_POST);die;
-//            2、$param = $this->request->param();
-//            3、$cid = input();
             if (empty($_POST['userinp'])) {
                 return msg(1,'用户名不能为空');
             }
@@ -29,7 +22,7 @@ class Login extends Base
             }
             $name = trim($_POST['userinp']);
             $pwd = trim($_POST['password']);
-            $model = new User();
+            $model   = new User();
             $userRes = $model->getUser($name);
             if (empty($userRes)) {
                 return msg(1,'用户名错误');
@@ -38,8 +31,35 @@ class Login extends Base
             if (empty($userInfoRes)) {
                 return msg(2,'密码错误');
             }
+            //登录验证码
+            if (!empty($_POST['code'])) {
+                if (session('code') !== trim($_POST['code'])) {
+                    return msg(3,'验证码错误');
+                }
+            }
             return msg(0,'登录成功');
         }
         return view('index');
+    }
+    /*
+     * 获取登录验证码
+     */
+    public function getCode(){
+        import('Verification', EXTEND_PATH,'.php');
+        $obj = new  \ValidateCode();
+        $obj->doimg();
+        session('code', $obj->getCode());
+    }
+    /*
+     *注册
+     */
+    public function register() {
+        return view('reg');
+    }
+    /*
+     * 列表展示
+     */
+    public function showList() {
+
     }
 }
