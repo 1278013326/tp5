@@ -15,13 +15,7 @@ class TaobaoBase extends Controller
         return ihttp_request($url);
     }
 }
-function msg($code, $msg) {
-    $res = array(
-        'code' => $code,
-        'msg'  => $msg,
-    );
-    return $res;
-}
+
 
 function error($errno, $message = '')
 {

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link type="text/css" rel="stylesheet" href="css/style.css" />
+	<link type="text/css" rel="stylesheet" href="__STATIC__/melody/css/style.css" />
     <!--[if IE 6]>
     <script src="__STATIC__/melody/js/iepng.js" type="text/javascript"></script>
         <script type="text/javascript">
@@ -64,12 +64,31 @@
               </tr>
               <tr height="70">
                 <td>用户名</td>
-                <td><input type="text" value="" class="l_user" /></td>
+                <td><input type="text" name="name" value="" class="l_user" /></td>
               </tr>
               <tr height="70">
                 <td>密&nbsp; &nbsp; 码</td>
-                <td><input type="password" value="" class="l_pwd" /></td>
+                <td><input type="password" name="pwd" value="" class="l_pwd" /></td>
               </tr>
+                <tr height="70">
+                    <td>验证码</td>
+                    <td><input type="text" name="code"></td>
+<!--                    <td><img src=""></td>-->
+                    <td><img src="/index.php/index/login/getCode" onclick="javascript:this.src='/index.php/index/login/getCode?tm='+Math.random();" /></td>
+<!--                    <td><input type="password" name="pwd" value="" class="l_pwd" /></td>-->
+<!--                    <td><input type="password" name="pwd" value="" class="l_pwd" /></td>-->
+                </tr>
+
+<!--                <p class="p-input pos code hide">-->
+<!--                    <label for="veri">请输入验证码</label>-->
+<!--                    <input type="text" id="veri">-->
+<!--                    <img src="">-->
+<!--                    <span class="tel-warn img-err hide"><em>账号或密码错误，请重新输入</em><i class="icon-warn"></i></span>-->
+<!--                    <img src="index.php/index/login/getCode" onclick="javascript:this.src='index.php/index/login/getCode?tm='+Math.random();" />-->
+<!--                    <span class="tel-warn img-err hide"><em>验证码错误，请重新输入</em><i class="icon-warn"></i></span>-->
+<!--                    &lt;!&ndash; <a href="javascript:;">换一换</a> &ndash;&gt;-->
+<!--                </p>-->
+
               <tr>
               	<td>&nbsp;</td>
                 <td style="font-size:12px; padding-top:20px;">
@@ -81,7 +100,7 @@
               </tr>
               <tr height="60">
               	<td>&nbsp;</td>
-                <td><input type="submit" value="登录" class="log_btn" /></td>
+                <td><input type="button" id =login value="登录" class="log_btn" /></td>
               </tr>
             </table>
             </form>
@@ -105,3 +124,23 @@
 <script src="__STATIC__/melody///letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
 <![endif]-->
 </html>
+<script src="__STATIC__/common/jquery-3.2.1.min.js"></script>
+<script>
+    $(document).on("click","#login",function(){
+        var name = $('input[name="name"]').val();
+        var pwd = $('input[name="pwd"]').val();
+        var code = $('input[name="code"]').val();
+        $.ajax({
+            type:"post",
+            url:"/index.php/index/login/index",
+            data:{name:name,pwd:pwd,code:code},
+            success:function(msg) {
+                if(msg.code==0) {
+                    window.location.href='/index.php/index/index';
+                } else {
+                    alert('修改失败');
+                }
+            }
+        })
+    })
+</script>

@@ -14,14 +14,14 @@ class Login extends Base
     public function index()
     {
         if($this->request->isPost()){
-            if (empty($_POST['userinp'])) {
+            if (empty($_POST['name'])) {
                 return msg(1,'用户名不能为空');
             }
-            if (empty($_POST['password'])) {
+            if (empty($_POST['pwd'])) {
                 return msg(1,'密码不能为空');
             }
-            $name = trim($_POST['userinp']);
-            $pwd = trim($_POST['password']);
+            $name = trim($_POST['name']);
+            $pwd  = trim($_POST['pwd']);
             $model   = new User();
             $userRes = $model->getUser($name);
             if (empty($userRes)) {
@@ -39,7 +39,7 @@ class Login extends Base
             }
             return msg(0,'登录成功');
         }
-        return view('index');
+        return view('login');
     }
     /*
      * 获取登录验证码
