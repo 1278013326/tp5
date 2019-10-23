@@ -5,9 +5,9 @@ use DOMDocument;
 use think\Db;
 use think\Request;
 use think\Controller;
-use app\index\controller\Base;
+use app\index\controller\TaobaoBase;
 
-class Taobao extends Base
+class Taobao extends TaobaoBase
 {
     private $num = 0;
 

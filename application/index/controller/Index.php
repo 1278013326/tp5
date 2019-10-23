@@ -5,7 +5,6 @@ namespace app\index\controller;
 
 class Index
 {
-
     public function index()
     {
         //链接数据库
@@ -38,11 +37,7 @@ class Index
 //        $this->assign('title', $setting['title']);
         //跳转
         //$this->redirect('index/journalism/index');exit;
-    }
-
-    public function logout(){
-        $res = $this->sso->logout();
-        $this->result(1,200,$res);die;
+        return view('index');
     }
 
 }
