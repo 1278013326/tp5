@@ -4,7 +4,10 @@
 namespace app\index\controller;
 
 
-class Member
+class Member extends Base
 {
-
+    public function index()
+    {
+        return view('member');
+    }
 }

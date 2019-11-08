@@ -45,7 +45,7 @@ class Login extends Base
      * 获取登录验证码
      */
     public function getCode(){
-        import('Verification', EXTEND_PATH,'.php');
+        import('verification/Verification', EXTEND_PATH,'.php');
         $obj = new  \ValidateCode();
         $obj->doimg();
         session('code', $obj->getCode());

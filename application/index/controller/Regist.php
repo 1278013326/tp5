@@ -4,7 +4,10 @@
 namespace app\index\controller;
 
 
-class Regist
+class Regist extends Base
 {
-
+    public function index()
+    {
+        return view('regist');
+    }
 }

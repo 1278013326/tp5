@@ -4,7 +4,10 @@
 namespace app\index\controller;
 
 
-class Product
+class Product extends Base
 {
-
+    public function index()
+    {
+        return view('product');
+    }
 }

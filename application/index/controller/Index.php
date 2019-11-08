@@ -3,7 +3,9 @@ namespace app\index\controller;
 //use app\index\model\Setting;
 //use think\Db;
 
-class Index
+
+
+class Index extends Base
 {
     public function index()
     {

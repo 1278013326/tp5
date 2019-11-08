@@ -4,7 +4,10 @@
 namespace app\index\controller;
 
 
-class Category
+class Category extends Base
 {
-
+    public function index()
+    {
+        return view('category');
+    }
 }

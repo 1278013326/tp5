@@ -4,7 +4,14 @@
 namespace app\index\controller;
 
 
-class Brand
+class Brand extends Base
 {
-
+    public function index()
+    {
+        return view('brand');
+    }
+    public function brandList()
+    {
+        return view('brandList');
+    }
 }

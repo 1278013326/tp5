@@ -17,7 +17,7 @@ class ValidateCode
     public function __construct()
     {
 
-        $this->font = ROOT_PATH . '/extend/elephant.ttf';
+        $this->font = ROOT_PATH . '/extend/verification/elephant.ttf';
     }
 
     //生成随机码
