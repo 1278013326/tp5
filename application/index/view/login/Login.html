@@ -37,7 +37,7 @@
 <div class="soubg">
 	<div class="sou">
         <span class="fr">
-        	<span class="fl">你好，请<a href="index.php/index/login/index">登录</a>&nbsp; <a href="index.php/index/regist/index" style="color:#ff4e00;">免费注册</a>&nbsp; </span>
+        	<span class="fl">你好，请<a href="index/login/index">登录</a>&nbsp; <a href="index/regist/index" style="color:#ff4e00;">免费注册</a>&nbsp; </span>
             <span class="fl">|&nbsp;关注我们：</span>
             <span class="s_sh"><a href="#" class="sh1">新浪</a><a href="#" class="sh2">微信</a></span>
             <span class="fr">|&nbsp;<a href="#">手机版&nbsp;<img src="__STATIC__/reception/images/s_tel.png" align="absmiddle" /></a></span>
@@ -59,7 +59,7 @@
               	<td width="55">&nbsp;</td>
                 <td>
                 	<span class="fl" style="font-size:24px;">登录</span>
-                    <span class="fr">还没有商城账号，<a href="index.php/index/regist/index" style="color:#ff4e00;">立即注册</a></span>
+                    <span class="fr">还没有商城账号，<a href="index/regist/index" style="color:#ff4e00;">立即注册</a></span>
                 </td>
               </tr>
               <tr height="70">
@@ -74,7 +74,7 @@
                     <td>验证码</td>
                     <td><input type="text" name="code"></td>
 <!--                    <td><img src=""></td>-->
-                    <td><img src="/index.php/index/login/getCode" onclick="javascript:this.src='/index.php/index/login/getCode?tm='+Math.random();" /></td>
+                    <td><img src="/index/login/getCode" onclick="javascript:this.src='/index/login/getCode?tm='+Math.random();" /></td>
 <!--                    <td><input type="password" name="pwd" value="" class="l_pwd" /></td>-->
 <!--                    <td><input type="password" name="pwd" value="" class="l_pwd" /></td>-->
                 </tr>
@@ -84,7 +84,7 @@
 <!--                    <input type="text" id="veri">-->
 <!--                    <img src="">-->
 <!--                    <span class="tel-warn img-err hide"><em>账号或密码错误，请重新输入</em><i class="icon-warn"></i></span>-->
-<!--                    <img src="index.php/index/login/getCode" onclick="javascript:this.src='index.php/index/login/getCode?tm='+Math.random();" />-->
+<!--                    <img src="index/login/getCode" onclick="javascript:this.src='index/login/getCode?tm='+Math.random();" />-->
 <!--                    <span class="tel-warn img-err hide"><em>验证码错误，请重新输入</em><i class="icon-warn"></i></span>-->
 <!--                    &lt;!&ndash; <a href="javascript:;">换一换</a> &ndash;&gt;-->
 <!--                </p>-->
@@ -132,11 +132,11 @@
         var code = $('input[name="code"]').val();
         $.ajax({
             type:"post",
-            url:"/index.php/index/login/index",
+            url:"/index/login/index",
             data:{name:name,pwd:pwd,code:code},
             success:function(msg) {
                 if(msg.code==0) {
-                    window.location.href='/index.php/index/index';
+                    window.location.href='/index/index';
                 } else {
                     alert('修改失败');
                 }
