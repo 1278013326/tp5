@@ -8,7 +8,8 @@
 // +----------------------------------------------------------------------
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
-
+use think\Route;
+//Route::get('smallRoutine','index/regist/index');
 return [
     '__pattern__' => [
         'name' => '\w+',

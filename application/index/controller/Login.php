@@ -15,29 +15,31 @@ class Login extends Base
     {
         if($this->request->isPost()){
             if (empty($_POST['name'])) {
-                return msg(1,'用户名不能为空');
+                return self::msg(1,'用户名不能为空');
             }
             if (empty($_POST['pwd'])) {
-                return msg(1,'密码不能为空');
+                return self::msg(1,'密码不能为空');
             }
             $name = trim($_POST['name']);
             $pwd  = trim($_POST['pwd']);
             $model   = new User();
             $userRes = $model->getUser($name);
             if (empty($userRes)) {
-                return msg(1,'用户名错误');
+                return self::msg(1,'用户名错误');
             }
             $userInfoRes = $model->getUserInfo($name, $pwd);
             if (empty($userInfoRes)) {
-                return msg(2,'密码错误');
+                return self::msg(2,'密码错误');
             }
             //登录验证码
             if (!empty($_POST['code'])) {
                 if (session('code') !== trim($_POST['code'])) {
-                    return msg(3,'验证码错误');
+                    return self::msg(3,'验证码错误');
                 }
+            } else {
+                return self::msg(3,'验证码不能为空');
             }
-            return msg(0,'登录成功');
+            return self::msg(0,'登录成功');
         }
         return view('login');
     }
