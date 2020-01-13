@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>HTML5+jQuery制作温馨浪漫爱心表白动画特效(我们程序员也有浪漫的时候)-psd素材网</title>
+
+<style type="text/css">
+@font-face {
+	font-family: digit;
+	src: url('digital-7_mono.ttf') format("truetype");
+}
+</style>
+
+<link href="css/default.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/garden.js"></script>
+<script type="text/javascript" src="js/functions.js"></script>
+
+</head>
+
+<body>
+
+<div id="mainDiv">
+	<div id="content">
+		<div id="code" style="font-size: 16px;">
+			<span class="comments" style="color:#FF0000">亲爱的鹤儿</span><br />
+			<span class="space"/><span class="comments" style="color:#FF66FF">现在开始我只疼你一个人</span><br />
+			<span class="space"/><span class="comments" style="color:#FF66FF">宠你爱你，不会骗你</span><br />
+			<span class="space"/><span class="comments" style="color:#FF66FF">答应你的每一件事情我都会做到</span><br />
+			<span class="space" style="color:#FF66FF"/>对你讲的每一句都是真话<br />
+			<span class="space" style="color:#FF66FF"/>不许欺负你骂你要相信你<br />
+			<span class="space" style="color:#FF66FF"/>有人欺负你，我会第一时间出来帮你<br />
+			<span class="space" style="color:#FF66FF"/>你开心的时候我会陪着你开心<br />
+			<span class="space" style="color:#FF66FF"/>你不开心我哄你开心<br />
+			<span class="space" style="color:#FF66FF"/>永远觉得你最漂亮<br />
+			<span class="space" style="color:#FF66FF"/>做梦都会梦见你<br />
+			<span class="space" style="color:#FF66FF"/>在我的心里只有你！<br />
+			<span class="space" style="color:#FF66FF"/>遇到你是缘分<br />
+			<span class="space" style="color:#FF66FF"/>喜欢你是命中注定<br />
+			<span class="space" style="color:#FF66FF"/>爱上你是我情非得已<br />
+			<span class="space" style="color:#FF66FF"/>想念你是我逼不得已<br />
+			<span class="space" style="color:#FF66FF"/>我会用心去爱你~<br />
+			<br>
+			<span><a href="../../four/1/index3.html" id="accept" style="color:#FF0000">如果你接受我，请点击这里</a></span>
+			<br />
+		</div>
+		<div id="loveHeart" style="color:#FF66FF">
+			<canvas id="garden"></canvas>
+			<div id="words">
+				<div id="messages">
+					鹤儿,我喜欢你！
+					<div id="elapseClock"></div>
+				</div>
+				<div id="loveu">
+					Love u forever and ever.<br/>
+					<div class="signature" style="color:#66FFFF">- 达浪</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<audio src="http://music.163.com/song/media/outer/url?id=1336228421" autoplay="autoplay" loop="true"></audio>
+</div>
+
+<script type="text/javascript">
+var offsetX = $("#loveHeart").width() / 2;
+var offsetY = $("#loveHeart").height() / 2 - 55;
+var together = new Date();
+together.setFullYear(2019, 12, 4);
+together.setHours(0);
+together.setMinutes(0);
+together.setSeconds(0);
+together.setMilliseconds(0);
+
+if (!document.createElement('canvas').getContext) {
+	var msg = document.createElement("div");
+	msg.id = "errorMsg";
+	msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
+	document.body.appendChild(msg);
+	$("#code").css("display", "none")
+	$("#copyright").css("position", "absolute");
+	$("#copyright").css("bottom", "10px");
+	document.execCommand("stop");
+} else {
+	setTimeout(function () {
+		startHeartAnimation();
+	}, 5000);
+
+	timeElapse(together);
+	setInterval(function () {
+		timeElapse(together);
+	}, 500);
+
+	adjustCodePosition();
+	$("#code").typewriter();
+}
+</script>
+
+</body>
+</html>

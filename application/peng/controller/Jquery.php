@@ -57,4 +57,13 @@ class Jquery extends Base
     public function snowman() {
         return view('snowman');
     }
+    /**
+     * 天狗食月
+     */
+    public function dogMoon() {
+        return view('dogmoon');
+    }
+    public function clouds() {
+
+    }
 }
