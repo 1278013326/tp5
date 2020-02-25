@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>jQuery播放音乐 - 何问起</title><base target=_blank />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="http://hovertree.com/ziyuan/bootstrap/3.3.6/css/bootstrap.min.css">
+</head>
+<body>
+<div class="playHovertree btn btn-primary">播放</div>
+<div class="pauseHovertree btn btn-primary">暂停</div>
+<script src="http://hovertree.com/ziyuan/jquery/jquery-2.2.0.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        var audioElementHovertree = document.createElement('audio');
+        audioElementHovertree.setAttribute('src', 'http://down.hovertree.com/hovertreesound/hovertreesnow.mp3');
+        audioElementHovertree.setAttribute('autoplay', 'autoplay'); //打开自动播放
+        //audioElement.load()
+
+        $.get();
+
+        audioElementHovertree.addEventListener("load", function() {
+            audioElementHovertree.play();
+        }, true);
+
+        $('.playHover'+'tree').click(function() {
+            audioElementHovertree.play();
+        });
+
+        $('.pauseH'+'overtree').click(function() {
+            audioElementHovertree.pause();
+        });
+    });</script>
+<br /><br />
+By <a href="http://hovertree.com">何问起</a> <a href="http://hovertree.com/code/">代码</a>
+</body>
+</html>

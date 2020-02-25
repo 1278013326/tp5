@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>纯CSS3鼠标滑过按钮流光效果 - 何问起</title>
+    <style>
+        body {	background: #494A5F;
+            color: #D5D6E2;
+            font-family: "Microsoft YaHei","宋体","Segoe UI", "Lucida Grande", Helvetica, Arial,sans-serif, FreeSans, Arimo;}
+        a{color: #2fa0ec;text-decoration: none;outline: none;}
+        .center{text-align: center;}
+
+
+        .button {
+            display: block;
+            position: relative;
+            background: #00B16A;
+            color: #fff;
+            width: 160px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            font-family: 'Ubuntu', sans-serif;
+            font-size: 15px;
+            font-weight: bold;
+            text-decoration: none;
+            margin: 50px auto 0;
+            border-radius: 2px;
+            overflow: hidden;
+            -webkit-transition: all 0.15s ease-in;
+            transition: all 0.15s ease-in;
+        }
+        .button:hover {
+            background: #26C281;
+        }
+        .button:before {
+            content: ' ';
+            position: absolute;
+            background: #fff;
+            width: 25px;
+            height: 50px;
+            top: 0;
+            left: -45px;
+            opacity: 0.3;
+            -webkit-transition: all 0.25s ease-out;
+            transition: all 0.25s ease-out;
+            -webkit-transform: skewX(-25deg);
+            transform: skewX(-25deg);
+        }
+        .button:hover:before {
+            width: 45px;
+            left: 205px;
+        }
+    </style>
+</head>
+<body>
+
+<h3 class="center">用鼠标滑过下面的按钮看看效果！</h3>
+<a class="button" href="http://hovertree.com/code/">Link</a>
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+    <p>适用浏览器：360、FireFox、Chrome、Opera、傲游、搜狗、世界之窗等新版浏览器. 不支持IE8及以下浏览器。</p>
+    <p>来源：<a href="http://hovertree.com/" target="_blank">何问起</a></p>
+</div>
+</body>
+</html>

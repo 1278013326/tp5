@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>jquery同时改版悬停行和列背景色 - 何问起</title>
+    <meta charset="utf-8" />
+    <style>
+        .hovertreeClass a {
+            color: black;
+            text-decoration: none;
+        }
+
+        td.hewenqi, tr.hewenqi {
+            background: #f0f0f0;
+            color: red;
+        }
+
+        .hewenqi a {
+            color: red;
+        }
+
+        table.hovertreeClass {
+            border-collapse: collapse;
+            border: none;
+        }
+
+        .hovertreeClass td, th {
+            border: solid green 1px;
+        }
+    </style>
+</head>
+<body>
+<h2>当鼠标悬停到某个单元格上，该单元格所在的行和列背景色都变化</h2>
+<table class="hovertreeClass">
+    <tr>
+        <td>何问起</td>
+        <td><a href="http://hovertree.com/h/bjaf/hoverclock.htm">时钟</a></td>
+        <td>hewenqi</td>
+        <td><a href="http://hovertree.com/tiku/">题库</a></td>
+        <td>hoverc</td>
+    </tr>
+    <tr>
+        <td>何问起</td>
+        <td>hovertree</td>
+        <td><a href="http://too.hovertree.com">工具</a></td>
+        <td>柯乐义</td>
+        <td><a href="http://hovertree.com/texiao/">特效</a></td>
+    </tr>
+    <tr>
+        <td><a href="http://hovertree.com/menu/jquery/">jQuery</a></td>
+        <td><a href="http://hovertree.com/menu/javascript/">JavaScript</a></td>
+        <td>hewenqi</td>
+        <td>柯乐义</td>
+        <td><a href="http://hovertree.com/code/">代码</a></td>
+    </tr>
+    <tr>
+        <td><a href="http://hovertree.com">何问起</a></td>
+        <td>hovertree</td>
+        <td>hewenqi</td>
+        <td>柯乐义</td>
+        <td>hoverc</td>
+    </tr>
+    <tr>
+        <td><a href="http://tool.hovertree.com/a/base64/">图片base64编码</a></td>
+        <td>hovertree</td>
+        <td>hewenqi</td>
+        <td><a href="http://keleyi.com">何问起</a></td>
+        <td>hoverc</td>
+    </tr>
+</table>
+By 何问起
+<script type="text/javascript" src="http://hovertree.com/ziyuan/jquery/jquery-1.12.0.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var hover_index = 0;
+        $("table.hovertreeClass td").hover(function () {
+            hover_index = $(this).parent().find('td').index(this);
+            $("table.hovertreeClass tr").find("td:eq(" + hover_index + ")").addClass("hewenqi");
+            $(this).addClass("hewenqi");
+        }, function () {
+            $("table.hovertreeClass tr").find("td:eq(" + hover_index + ")").removeClass("hewenqi");
+            $(this).removeClass("hewenqi");
+        });
+
+        $("table.hovertreeClass tbody tr").hover(function () {
+            $(this).addClass("hewenqi");
+        }, function () {
+            $(this).removeClass("hewenqi");
+        });
+    });
+</script>
+
+</body>
+</html>

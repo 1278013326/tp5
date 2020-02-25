@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>JS判断浏览器Storage支持情况 - 何问起</title><base target="_blank" />
+    <meta charset="utf-8" />
+</head>
+<body>
+<script>
+    if(typeof(Storage)=="undefined")
+    {
+        document.write("何问起提醒：您的浏览器不支持Web Storage");
+    }
+    else {
+        document.write("何问起提醒：您的浏览器可以使用Web Storage");
+    }
+</script>
+<div><br />参考：
+    <a href="http://hovertree.com/h/bjaf/html_5_webstorage.htm" style="color:blue">Web存储</a><br />
+    By hovertree.com</div>
+</body>
+</html>

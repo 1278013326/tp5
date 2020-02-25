@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery实现页面内锚点平滑跳转-何问起</title><base target="_blank" />
+    <style type="text/css">
+        #hovertree {
+            height: 800px;
+            background: red;
+            text-align:center;color:white;
+        }
+
+        #keleyi {
+            height: 800px;
+            background: green;text-align:center;color:white;
+        }
+
+        #myslider {
+            height: 800px;
+            background: black;text-align:center;color:white;
+        }
+
+        #zonemenu {
+            height: 800px;
+            background: yellow;text-align:center;
+        }
+
+        .keleyilink{position:fixed;}
+        .keleyilink a {text-decoration:none;}
+        a{color:blue;}
+    </style>
+</head>
+<body>
+<div class="keleyilink">
+    请点击这里：<a href="javascript:scroll('hovertree');" target="_self">HoverTree</a>
+    <a href="javascript:scroll('keleyi');" target="_self">柯乐义</a>
+    <a href="javascript:scroll('myslider');" target="_self">myslider</a>
+    <a href="javascript:scroll('zonemenu');" target="_self">ZoneMenu</a>
+</div>
+<div id="hovertree">hovertree
+    <br /><br /><br /><a href="http://keleyi.com/a/bjae/jrdfulnx.htm">原文</a> <a href="http://keleyi.com">柯乐义</a> <a href="http://hovertree.com">HoverTree</a> <a href="http://keleyi.com/keleyi/phtml/">特效库</a>
+</div>
+<div id="keleyi">keleyi</div>
+<div id="myslider">myslider</div>
+<div id="zonemenu">zonemenu</div>
+<script src="http://hovertree.com/ziyuan/jquery/jquery-1.11.3.min.js"></script>
+<script src="http://keleyi.com/keleyi/phtml/jqtexiao/37/jquery.hovertreescroll.js"></script>
+<script>
+    function scroll(id) {
+        $("#" + id).HoverTreeScroll(1000);
+    }
+</script>
+</body>
+</html>

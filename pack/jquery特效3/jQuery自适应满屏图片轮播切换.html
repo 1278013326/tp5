@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>jQuery自适应满屏图片轮播切换 - 何问起</title>
+  <script type="text/javascript" src="http://hovertree.com/ziyuan/jquery/jquery-1.12.0.min.js"></script>
+  <script type="text/javascript" src="http://hovertree.com/texiao/jquery/30/js/hoverslide.js"></script>
+</head>
+<body>
+<style type="text/css">
+  * {
+    margin:0;
+    padding:0;
+    list-style:none;
+  }
+  body {
+    background:#fff;
+    font:normal 12px/22px 宋体;
+    width:100%;
+  }
+  img {
+    border:0;
+  }
+  a {
+    text-decoration:none;
+    color:#333;
+  }
+  a:hover {
+    color:#1974A1;
+  }
+  #footer {
+    text-align:center;
+  }
+  .fullSlide {
+    width:100%;
+    position:relative;
+    height:410px;
+    background:#000;
+  }
+  .fullSlide .bd {
+    margin:0 auto;
+    position:relative;
+    z-index:0;
+    overflow:hidden;
+  }
+  .fullSlide .bd ul {
+    width:100% !important;
+  }
+  .fullSlide .bd li {
+    width:100% !important;
+    height:410px;
+    overflow:hidden;
+    text-align:center;
+  }
+  .fullSlide .bd li a {
+    display:block;
+    height:410px;
+  }
+  .fullSlide .hd {
+    width:100%;
+    position:absolute;
+    z-index:1;
+    bottom:0;
+    left:0;
+    height:30px;
+    line-height:30px;
+  }
+  .fullSlide .hd ul {
+    text-align:center;
+  }
+  .fullSlide .hd ul li {
+    cursor:pointer;
+    display:inline-block;
+    *display:inline;
+    zoom:1;
+    width:42px;
+    height:11px;
+    margin:1px;
+    overflow:hidden;
+    background:#000;
+    filter:alpha(opacity=50);
+    opacity:0.5;
+    line-height:999px;
+  }
+  .fullSlide .hd ul .on {
+    background:#f00;
+  }
+  .fullSlide .prev,.fullSlide .next {
+    display:block;
+    position:absolute;
+    z-index:1;
+    top:50%;
+    margin-top:-30px;
+    left:15%;
+    z-index:1;
+    width:40px;
+    height:60px;
+    background:url(http://hovertree.com/texiao/jquery/30/images/slider-arrow.png) -126px -137px #000 no-repeat;
+    cursor:pointer;
+    filter:alpha(opacity=50);
+    opacity:0.5;
+    display:none;
+  }
+  .fullSlide .next {
+    left:auto;
+    right:15%;
+    background-position:-6px -137px;
+  }
+
+</style>
+<div class="fullSlide">
+  <div class="bd">
+    <ul>
+      <li _src="url(http://hovertree.com/texiao/jquery/30/images/a.jpg)" style="background:#E2025E center 0 no-repeat;"><a target="_blank" href="http://hovertree.com/code/"></a></li>
+      <li _src="url(http://hovertree.com/texiao/jquery/30/images/b.jpg)" style="background:#DED5A1 center 0 no-repeat;"><a target="_blank" href="http://hovertree.com/tiku/"></a></li>
+      <li _src="url(http://hovertree.com/texiao/jquery/30/images/c.jpg)" style="background:#B8CED1 center 0 no-repeat;"><a target="_blank" href="http://tool.hovertree.com/"></a></li>
+      <li _src="url(http://hovertree.com/texiao/jquery/30/images/d.jpg)" style="background:#98918E center 0 no-repeat;"><a target="_blank" href="http://run.hovertree.com/code/"></a></li>
+      <li _src="url(http://hovertree.com/texiao/jquery/30/images/e.jpg)" style="background:#FEFF19 center 0 no-repeat;"><a target="_blank" href="http://keleyi.com"></a></li>
+    </ul>
+  </div>
+  <div class="hd">
+    <ul>
+    </ul>
+  </div>
+  <span class="prev"></span> <span class="next"></span> </div>
+<script type="text/javascript">
+  jQuery(".fullSlide").hover(function() {
+            jQuery(this).find(".prev,.next").stop(true, true).fadeTo("show", 0.5)
+          },
+          function() {
+            jQuery(this).find(".prev,.next").fadeOut()
+          });
+  jQuery(".fullSlide").hoverslide({
+    titCell: ".hd ul",
+    mainCell: ".bd ul",
+    effect: "fold",
+    autoPlay: true,
+    autoPage: true,
+    trigger: "click",
+    startFun: function(i) {
+      var curLi = jQuery(".fullSlide .bd li").eq(i);
+      if ( !! curLi.attr("_src")) {
+        curLi.css("background-image", curLi.attr("_src")).removeAttr("_src")
+      }
+    }
+  });
+</script>
+<div style="text-align:center;clear:both; font-size:12px;">
+  <p><a href="http://hovertree.com" target="_blank">何问起</a>分享网站整理</p>
+  <p>适用浏览器：IE6、IE7、IE8、360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗. </p>
+  <p>来源：何问起 <a href="http://hovertree.com/code/jquery/smjv6d0n.htm" target="_blank">原文</a> <a href="http://hovertree.com/h/bjaf/jsax6stf.htm" target="_blank">下载</a></p>
+</div>
+</body>
+</html>

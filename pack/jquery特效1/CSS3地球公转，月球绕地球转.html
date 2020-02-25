@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS3地球公转，月球绕地球转 -何问起</title>
+	<style>
+		.box{
+			transform: scale(0.5);
+			position: relative;
+			padding: 1px;
+			height: 300px;
+			width: 300px;
+		}
+		.sunline{
+			position:relative;
+			height: 400px;
+			width: 400px;
+			border: 2px solid silver;
+			border-radius: 50%;
+			margin: 50px 0 0 50px;
+			display: flex;
+			animation: rotate 10s infinite linear;
+		}
+		.hovertreesun{
+			height: 100px;
+			width: 100px;
+			margin: auto;
+			background-color: red;
+			border-radius: 50%;
+			box-shadow: 5px 5px 10px red,-5px -5px 10px red,5px -5px 10px red,-5px 5px 10px red;
+		}
+		.earthline{
+			position: absolute;
+			right: 0;
+			top: 50%;
+			height: 200px;
+			width: 200px;
+			margin: -100px -100px 0 0;
+			border: 1px solid silver;
+			border-radius: 50%;
+			display: flex;
+			animation: rotate 2s infinite linear;
+		}
+		.earth{
+			margin: auto;
+			height: 50px;
+			width: 50px;
+			background-color: blue;
+			border-radius: 50%;
+		}
+		.moon{
+			position: absolute;
+			left: 0;
+			top: 50%;
+			height: 20px;
+			width: 20px;
+			margin: -10px 0 0 -10px;
+			background-color: yellow;
+			border-radius: 50%;
+		}
+		@keyframes rotate{
+			100%{transform:rotate(360deg);}
+		}body{background:black;}
+	</style>
+</head>
+<body>
+<div class="box">
+	<div class="sunline">
+		<div class="hovertreesun"></div>
+		<div class="earthline">
+			<div class="earth"></div>
+			<div class="moon"></div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

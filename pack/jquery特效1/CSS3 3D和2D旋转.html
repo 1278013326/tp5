@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS3 3D和2D旋转 - 何问起</title>
+    <style>
+        .animated_div {
+            width: 100px;
+            height: 80px;
+            color: white;
+            position: relative;
+            font-weight: bold;
+            padding: 20px 10px 0px 10px;
+            float: left;
+            margin: 20px;
+            margin-right: 50px;
+            border: 1px solid #888888;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            font: 12px Verdana, Arial, Helvetica, sans-serif;
+            text-align: center;
+            vertical-align: middle;
+            background-color:green;
+        }
+        div
+        {
+            width:100px;
+            height:75px;
+            background-color:yellow;
+            border:1px solid black;
+        }
+        div#rotatey1
+        {
+            transform:rotateY(120deg);
+            -webkit-transform:rotateY(120deg); /* Safari and Chrome */
+            -moz-transform:rotateY(120deg); /* Firefox */
+        }
+    </style>
+</head>
+<body>
+请点击方块
+<p onclick="rotateDIV()" id="rotate1" class="animated_div" style="-webkit-transform: rotate(360deg);">2D 旋转 何问起</p>
+<p onclick="rotateYDIV()" id="rotatey1" class="animated_div" style="-webkit-transform: rotateY(180deg);">3D 旋转 hovertree.com</p>
+
+</body>
+</html>
+<script>
+    <!--
+    var x,y,n=0,ny=0,rotINT,rotYINT
+    function rotateDIV()
+    {
+        x=document.getElementById("rotate1")
+        clearInterval(rotINT)
+        rotINT=setInterval("startRotate()",10)
+    }
+    function rotateYDIV()
+    {
+        y=document.getElementById("rotatey1")
+        clearInterval(rotYINT)
+        rotYINT=setInterval("startYRotate()",10)
+    }
+    function startRotate()
+    {
+        n=n+1
+        x.style.transform="rotate(" + n + "deg)"
+        x.style.webkitTransform="rotate(" + n + "deg)"
+        x.style.OTransform="rotate(" + n + "deg)"
+        x.style.MozTransform="rotate(" + n + "deg)"
+        if (n==180 || n==360)
+        {
+            clearInterval(rotINT)
+            if (n==360){n=0}
+        }
+    }
+    function startYRotate()
+    {
+        ny=ny+1
+        y.style.transform="rotateY(" + ny + "deg)"
+        y.style.webkitTransform="rotateY(" + ny + "deg)"
+        y.style.OTransform="rotateY(" + ny + "deg)"
+        y.style.MozTransform="rotateY(" + ny + "deg)"
+        if (ny==180 || ny>=360)
+        {
+            clearInterval(rotYINT)
+            if (ny>=360){ny=0}
+        }
+    }
+    //-->
+</script>
+

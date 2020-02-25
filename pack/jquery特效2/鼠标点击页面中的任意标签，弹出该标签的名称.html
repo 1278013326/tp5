@@ -1,0 +1,23 @@
+<html>
+<head><title>鼠标点击页面中的任意标签，弹出该标签的名称 - 何问起</title></head>
+<body>
+<header>
+    <h1>请点击页面上各个地方</h1>
+    <p>My name is Donald Duck</p>
+</header>
+<div>何问起，这是div</div>
+<input value="hovertree.com 这是input" />
+<span>http://hovertree.com/code/</span>
+
+<p>何问起 http://hovertree.com/h/bjaf/hoverclock.htm</p>
+<script>
+
+    document.onclick=function(e){
+        var e=(e||event);
+        var o=e["target"]||e["srcElement"];
+        alert(o.tagName.toLowerCase());
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,264 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>html5自定义多媒体播放控件</title>
+    <style type="text/css">
+        .box{
+            width: 300px;
+            height: 50px;
+            background-color: blue;
+            border-radius: 10px;
+            box-shadow: 5px 5px 5px 5px #eee;
+        }
+        .play{
+            width: 0px;
+            height: 0px;
+            border-left: 16px solid #fff;
+            border-top: 10px solid rgba(255,255,255,0);
+            border-bottom: 10px solid rgba(255,255,255,0);
+            float: left;
+            margin-top: 12px;
+            margin-left: 10px;
+            cursor: pointer;
+
+        }
+        .pause{
+            width: 6px;
+            height: 18px;
+            border-left: 4px solid #fff;
+            border-right: 4px solid #fff;
+            float: left;
+            margin-top: 15px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        #progress{
+            width: 50%;
+            height: 8px;
+            background-color: #fff;
+            border-radius: 5px;
+            float: left;
+            margin-top: 20px;
+            margin-left: 10px;
+            position: relative;
+        }
+        #bar{
+            display: inline-block;
+            width: 0%;
+            height:100%;
+            background-color: #ccc;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #control{
+            width: 16px;
+            height: 16px;
+            border-radius: 8px;
+            background-color: #fff;
+            position: absolute;
+            top: -5px;
+            left: 0px;
+            cursor: pointer;
+
+        }
+        .sound{
+            width: 10px;
+            height: 8px;
+            border-right: 13px solid #fff;
+            border-top: 4px solid rgba(255,255,255,0);
+            border-bottom: 4px solid rgba(255,255,255,0);
+            float: left;
+            margin-top: 15px;
+            margin-left: 2px;
+            cursor: pointer;
+        }
+        .soundoff{
+            width: 10px;
+            height: 8px;
+            border-right: 13px solid #000;
+            border-top: 4px solid rgba(255,255,255,0);
+            border-bottom: 4px solid rgba(255,255,255,0);
+            float: left;
+            margin-top: 15px;
+            margin-left: 2px;
+            cursor: pointer;
+        }
+        #volume{
+            width: 15%;
+            height: 4px;
+            background-color: #fff;
+            border-radius: 5px;
+            float: left;
+            margin-top: 20px;
+            margin-left: 2px;
+            position: relative;
+        }
+        #volumeBar{
+            display: inline-block;
+            width: 0px;
+            height:100%;
+            background-color: #ccc;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #volumeControl{
+            width: 10px;
+            height: 10px;
+            border-radius: 5px;
+            background-color: #fff;
+            position: absolute;
+            top: -3px;
+            left: 0px;
+            cursor: pointer;
+
+        }
+        #full{
+            width: 15px;
+            height: 15px; border:2px solid #fff;
+            float: left;
+            margin-top: 13px;
+            margin-left: 4px;
+            transition: 0.5s all;
+            cursor: pointer;
+        }
+        #full:hover{
+            width: 20px;
+            height: 20px; border:2px solid #fff;
+            float: left;
+            margin-top: 10px;
+            margin-left: 2px;
+            transition: 0.5s all;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function (){
+//视频
+            var video=document.getElementById("video");
+//box
+            var box=document.getElementById("box");
+//按钮
+            var play=document.getElementById("play");
+//进度条
+            var progress=document.getElementById("progress");
+//进度色，灰色的部分
+            var bar=document.getElementById("bar");
+//进度条按钮
+            var control=document.getElementById("control");
+//喇叭
+            var sound=document.getElementById("sound");
+//全屏
+            var full=document.getElementById("full");
+//音量条容器
+            var volume=document.getElementById("volume");
+//volumeBar音量灰色
+            var volumeBar=document.getElementById("volumeBar");
+//音量调整按钮
+            var volumeControl=document.getElementById("volumeControl");
+            play.onclick=function(){
+                if(video.paused){
+                    play.className="pause";
+                    video.play();
+                }else{
+                    play.className="play";
+                    video.pause();
+                }
+            }
+//灰色和控制按钮与video播放进度一致
+            video.addEventListener("timeupdate",function(){
+                var scales=video.currentTime/video.duration;
+                bar.style.width=progress.offsetWidth*scales+"px";
+                control.style.left=progress.offsetWidth*scales+"px";
+
+            },false)
+//通过控制control来控制播放进度
+            control.onmousedown=function(e){
+                video.pause();
+                document.onmousemove=function(e){
+                    var leftv=e.clientX-progress.offsetLeft-box.offsetLeft;
+                    if(leftv<=0){
+                        leftv=0;
+                    }
+                    if(leftv>=progress.offsetWidth){
+                        leftv=progress.offsetWidth;
+                    }
+                    control.style.left=leftv+"px";
+                }
+                document.onmouseup=function(){
+                    var scales=control.offsetLeft/progress.offsetWidth;
+                    video.currentTime=video.duration*scales;
+                    video.play();
+                    document.onmousedown=null;
+                    document.onmousemove=null;
+                }
+            }
+//喇叭
+            sound.onclick=function(){
+                if (video.muted) {
+                    video.muted=false;
+                    sound.className="sound";
+                }
+                else{
+                    video.muted=true;
+                    sound.className="soundoff";
+                }
+            }
+//全屏
+            full.addEventListener("click",function(){
+                video.webkitRequestFullScreen();//支持谷歌内核。火狐内核的写法：
+            },false)
+//音量调整
+            volumeControl.onmousedown=function(e){
+                document.onmousemove=function(e){
+                    var leftb=e.clientX-volume.offsetLeft-box.offsetLeft;
+                    if(leftb<=0){
+                        leftb=0;
+                    }if (leftb>=volume.offsetWidth) {
+                        leftb=volume.offsetWidth;
+                    }
+                    volumeControl.style.left=leftb+"px";
+                    volumeBar.style.width=leftb+"px";
+                }
+                document.onmouseup=function(){
+
+                    video.volume=volumeControl.offsetLeft/volume.offsetWidth;
+                    document.onmousedown=null;
+                    document.onmousemove=null;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<video controls=controls id="video">
+    <source src="mov.mp4" ></source>
+</video>
+
+<div id="box" class="box">
+    <!-- 播放暂停按钮 -->
+    <div id="play" class="play">
+    </div>
+    <!-- 进度条 -->
+    <div id="progress">
+        <span id="bar"></span>
+        <span id="control"></span>
+    </div>
+    <!-- 喇叭 -->
+    <div id="sound" class="sound"></div>
+    <!-- 声音的进度（大小） -->
+    <div id="volume">
+        <span id="volumeBar"></span>
+        <span id="volumeControl"></span>
+    </div>
+    <!-- 全屏按钮 -->
+    <div id="full"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<canvas id="canvas" width="800" height="440" style="background:black;"></canvas>
+<script>
+    var c = document.getElementById("canvas"),
+        ctx = c.getContext("2d");
+
+    //先设置文字字体和大小
+    ctx.font = "4.2rem Open Sans,Microsoft YaHei";
+
+    //设置画笔（绘制线条）操作的线条宽度，非必须；如果不写这句，那就是默认1
+    ctx.lineWidth = 3;
+
+    //实线文字
+    ctx.fillStyle = "green";
+    ctx.fillText("实线(实心)文字：fill",10,100);
+
+    //空心文字
+    ctx.strokeStyle = "red";
+    ctx.strokeText("何问起空心文字:stroke",10,200);
+
+    //描边文字：实线与空心文字合起来就是描边啦！先写空心的和先写实心的视觉效果不同：
+    //1.空心+实心
+    ctx.strokeStyle = "red";
+    ctx.strokeText("描边：stroke+fill",10,300);
+    ctx.fillStyle = "green";
+    ctx.fillText("描边：stroke+fill",10,300);
+
+    //2.实心+空心
+    ctx.fillStyle = "green";
+    ctx.fillText("描边：fill+stroke",10,400);
+    ctx.strokeStyle = "red";
+    ctx.strokeText("描边：fill+stroke",10,400);
+
+    //2种描边效果的区分：简要来说就是：实心与空心谁后写，谁的效果更大！
+
+</script>

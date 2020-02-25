@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>何问起</title>
+    <style>
+        .fontSize22
+        {
+            font-size:22px;
+        }
+        .fontWeight
+        {
+            font-weight:bold;
+        }
+    </style>
+</head>
+
+<body>
+<div id="div1" class="fontSize22 fontWeight"  style="color:red">div实例文本</div>
+<button onclick="changeStyle()">changeStyle()</button>
+<script>
+    function changeStyle()
+    {
+        var div1 = document.getElementById("div1");
+        //div1.className = "fontSize22";
+        //div1.className += " fontWeight";
+        //删除单个class=""样式
+        //div1.className = div1.className.replace(/fontSize22/,"");
+        //删除所有class=""样式
+        //div1.removeAttribute("class");
+        //删除style=""中的单个样式
+        div1.style.cssText = div1.style.cssText.replace(/red/,"blue");
+        //删除style=""中的所有样式
+        //div1.style.cssText = "";
+    }
+</script>
+</body>
+</html>

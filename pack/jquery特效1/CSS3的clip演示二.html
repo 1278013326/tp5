@@ -1,0 +1,203 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body,dl,dd,h2,h3,p{
+			margin: 0;
+		}
+		ul{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		h2{
+			margin: 0;
+		}
+		.l{
+			float: left;
+		}
+		.r{
+			float: right;
+		}
+		.box{
+			overflow: hidden;
+			width: 700px;
+			height: 260px;
+			background-color: #ccc;
+			text-align: center;
+		}
+		.con{
+			width: 300px;
+			float: left;
+			margin-top: 50px;
+		}
+		.con dl{
+			width: 46%;
+			margin-left: 5px;
+			float: left;
+			line-height: 1.4;
+		}
+
+		.con dt{
+			font-weight: bold;
+			margin-bottom: 6px;
+		}
+		.con dd{
+			background-color: rgba(255,255,255,0.3);
+			padding: 2px;
+			margin-bottom: 4px;
+			cursor: pointer;
+		}
+		.show{
+			width: 280px;
+			float: right;
+			margin-right: 20px;
+		}
+		.show-tit{
+			font: 20px/50px "宋体";
+		}
+		.show-body{
+			height: 100px;
+			width: 280px;
+			border: 1px solid black;
+			border-radius: 10px;
+			padding: 5px;
+			text-align: center;
+			background-color: lightgreen;
+		}
+
+		.con-ul{
+			display:inline-block;
+			vertical-align: top;
+			width: 300px;
+			border: 2px solid black;
+			overflow: hidden;
+			padding: 10px;
+			border-radius: 10px;
+			margin-top: 10px;
+		}
+		.con-ul li{
+			height: 30px;
+			line-height: 30px;
+			font-size: 20px;
+			background-color: rgba(0,0,0,0.5);
+			text-align: left;
+			color: white;
+			cursor: pointer;
+			margin: 4px;
+			overflow: hidden;
+		}
+		.con-ul li input{
+			width: 100px;
+		}
+		#oShow{
+			margin: 0 auto;
+			width: 100px;
+			height: 100px;
+			background-color: pink;
+			position: absolute;
+			border: 1px solid black;
+			outline: 5px solid red;
+		}
+	</style>
+</head>
+<body>
+<div class="box" id="box">
+	<div class="con">
+		<!-- 添加测试单元1 -->
+		<ul class="con-ul" id="conUl">
+			<li><span class="l">top:<b>0px</b></span><button class="r">auto</button><input class="r" type="range" min="-120" max="120" step="1" value="0"></li>
+			<li><span class="l">right:<b>110px</b></span><button class="r">auto</button><input class="r" type="range" min="-120" max="120" step="1" value="110"></li>
+			<li><span class="l">bottom:<b>110px</b></span><button class="r">auto</button><input class="r" type="range" min="-120" max="120" step="1" value="110"></li>
+			<li><span class="l">left:<b>0px</b></span><button class="r">auto</button><input class="r" type="range" min="-120" max="120" step="1" value="0"></li>
+		</ul>
+	</div>
+	<div class="show">
+		<h2 class="show-tit">clip演示</h2>
+		<div class="show-body" id="sb">
+			<!-- 添加结构单元 -->
+			<div id="oShow">
+				测试内容
+			</div>
+
+			<!-- 添加结构单元结束 -->
+		</div>
+		<div id="show-img"></div>
+		<button id="reset">还原</button>
+	</div>
+</div>
+
+<script>
+	function getCSS(obj,style){
+		if(window.getComputedStyle){
+			return getComputedStyle(obj)[style];
+		}
+		return obj.currentStyle[style];
+	};
+	(function con(){
+		var oBox = document.getElementById('box');
+		var aDl = oBox.getElementsByTagName('dl');
+		var oSb = document.getElementById('sb');
+		var oShow = document.getElementById('oShow');
+		var oImg = document.getElementById('show-img');
+		reset.onclick = function(){
+			history.go();
+		}
+		var conChildren = conUl.children;
+		for(var i = 0; i < conChildren.length; i++){
+			conChildren[i].index = i;
+			var oFocus = conChildren[i].getElementsByTagName('input')[0];
+			conChildren[i].getElementsByTagName('button')[0].onclick = oFocus.onpropertychange = oFocus.oninput = oFocus.onchange = function(){
+				if(this.value === ''){
+					this.parentNode.getElementsByTagName('b')[0].innerHTML = 'auto';
+				}else{
+					this.parentNode.getElementsByTagName('b')[0].innerHTML = this.value + 'px';
+				}
+
+				oShow.style.clip = 'rect(' + conChildren[0].getElementsByTagName('b')[0].innerHTML + ',' + conChildren[1].getElementsByTagName('b')[0].innerHTML + ',' + conChildren[2].getElementsByTagName('b')[0].innerHTML + ',' + conChildren[3].getElementsByTagName('b')[0].innerHTML + ')';
+
+				oImg.innerHTML = 'clip:' + getCSS(oShow,'clip');
+
+			}
+			conChildren[i].onmouseover = function(){
+				this.style.color = "rgb(39,184,231)";
+			}
+			conChildren[i].onmouseout = function(){
+				this.style.color = "white";
+			}
+		}
+
+		//变量声明
+		var aC2 = oShow.getElementsByTagName('h2');
+		var aC3 = oShow.getElementsByTagName('h3');
+		var aCp = oShow.getElementsByTagName('p');
+		var oDc2=oDc3=oDcp = 'decimal';
+		var oD = ' ';
+		for(var i = 0, leni = aDl.length; i < leni; i++){
+			var oDt = aDl[i].getElementsByTagName('dt')[0];
+			var aDd = aDl[i].getElementsByTagName('dd');
+			aDl[i].last = 0;
+
+			for(var j = 0,lenj = aDd.length; j < lenj; j++){
+				aDd[j].index = j;
+				aDd[j].onclick = function(){
+					var oDl = this.parentNode;
+					var oDt = oDl.getElementsByTagName('dt')[0];
+					var aDd = oDl.getElementsByTagName('dd');
+					aDd[oDl.last].style.cssText = 'color: black; background-color: rgba(255,255,255,0.3);';
+					this.style.cssText = 'color: white; background-color: black;';
+					oShow.style[oDt.innerHTML] = this.innerHTML;
+
+					oDl.last = this.index;
+				}
+			}
+		}
+	})();
+
+</script>
+</body>
+</html>
+<!-- Generated by HoverTree (Fri Mar 18 06:58:39 CST 2016) 1ms -->

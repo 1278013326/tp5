@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>上下左右对称的九九乘法表 - 何问起</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <style>table.hovertreeClass {
+        border-collapse: collapse;
+        border: 0px;margin-top:50px;
+    }
+
+    .hovertreeClass td, th {
+        border: solid green 0px;
+    }</style>
+</head>
+<body>
+<h2>上下左右对称的九九乘法表</h2>
+<script>
+    document.write("<table class='hovertreeClass' width='600' border=0'>");
+    for(var i=1; i<=9; i++){
+        document.write("<tr>");
+        for(var j=1; j<=i; j++){
+            document.write("<td>"+ j +"*"+ i +"="+ i*j +"</td>");
+        }
+        document.write("</tr>");
+    }
+    document.write("</table>");
+</script>
+<script>
+    document.write("<table class='hovertreeClass' width='600' border=0'>");
+    for(var i=1; i<=9; i++){
+        document.write("<tr>");
+        for(var n=i; n<9; n++){
+            document.write("<td>&nbsp;</td>");
+        }
+        for(var j=i; j>=1; j--){
+            document.write("<td>"+ j +"*"+ i +"="+ i*j +"</td>");
+        }
+        document.write("</tr>");
+    }
+    document.write("</table>");
+</script>
+<script>
+    document.write("<table class='hovertreeClass' width='600' border=0'>");
+    for(var i=9; i>=1; i--){
+        document.write("<tr>");
+        for(var j=1; j<=i; j++){
+            document.write("<td>"+ j +"*"+ i +"="+ i*j +"</td>");
+        }
+        document.write("</tr>");
+    }
+    document.write("</table>");
+</script>
+<script>
+    document.write("<table class='hovertreeClass' width='600' border=0'>");
+    for(var i=9; i>=1; i--){
+        document.write("<tr>");
+        for(var j=8; j>=i; j--){
+            document.write("<td>&nbsp;</td>");
+        }
+        for(var j=i; j>=1; j--){
+            document.write("<td>"+ j +"*"+ i +"="+ i*j +"</td>");
+        }
+        document.write("</tr>");
+    }
+    document.write("</table>");
+</script>
+<br /><br />
+By 何问起
+</body>
+</html>

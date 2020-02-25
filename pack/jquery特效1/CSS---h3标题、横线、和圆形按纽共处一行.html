@@ -1,0 +1,69 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>CSS---h3标题、横线、和圆形按纽共处一行-何问起</title>
+    <style type="text/css">
+        *{
+            padding: 0;
+            margin:0;
+        }
+        .clearfloat{
+            zoom:1;/*激活IE属性*/
+        }
+        .clearfloat:after{
+            display: block;
+            clear: both;
+            content: '';
+            visibility: hidden;
+            height: 0;
+        }
+        .header{
+            width: 1000px;
+            height: 40px;
+            line-height: 40px;
+            margin: 0 auto;
+            background: #ccc;
+        }
+        .header h3{
+            float: left;
+            margin-left: 40px;
+            color: #fff;
+        }
+        .header .line{
+            float: left;
+            width: 200px;
+            margin-left: 50px;
+            margin-top: 20px;
+            border-top: 1px solid #fff;
+        }
+        .header .btn-group{
+            float: right;
+            margin-right: 20px;
+        }
+        .header .btn{
+            /*inline-block元素默认会有4px的边距的hack，例如img，解决方法是将其改成block元素*/
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            margin-left: 6px;
+            background: #999;
+            border-radius: 50%;/*盒子会变成圆*/
+        }
+        .header .active{
+            background: #69f;
+        }
+    </style>
+</head>
+<body>
+<div class="header clearfloat">
+    <h3>fruit list</h3>
+    <div class="line"></div>
+    <div class="btn-group">
+        <a href="" class="btn active"></a>
+        <a href="" class="btn"></a>
+        <a href="" class="btn"></a>
+        <a href="" class="btn"></a>
+    </div>
+</div>
+</body>
+</html>

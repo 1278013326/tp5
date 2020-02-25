@@ -1,0 +1,15 @@
+<title>canvas判断是否点击在绘制的图形上 - 何问起</title>	<canvas id="hovertreecanvas">你的浏览器不支持canvas！</canvas>
+<div id="result">点击方块内外查看效果</div>
+<style>#hovertreecanvas{border:solid 1px silver}</style>
+<script>var canvas = document.getElementById("hovertreecanvas"),
+		result = document.getElementById("result"),
+		ctx = canvas.getContext("2d");
+
+ctx.beginPath();
+ctx.rect(0,0,100,100);
+ctx.fill();
+
+canvas.addEventListener("click", function(ev){
+	result.innerHTML = ctx.isPointInPath(ev.layerX, ev.layerY) ? "点在方块上" : "点在方块外";
+});</script>
+

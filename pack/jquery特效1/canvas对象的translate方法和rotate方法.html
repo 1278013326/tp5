@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+ <script language="javascript">
+  function drawBowtie(ctx, fillStyle) {
+   ctx.fillStyle = "rgba(200,200,200,0.3)";
+   ctx.fillRect(-30, -30, 60, 60);
+   ctx.fillStyle = fillStyle;
+   ctx.globalAlpha = 1.0;
+   ctx.beginPath();
+   ctx.moveTo(25, 25);
+   ctx.lineTo(-25, -25);
+   ctx.lineTo(25, -25);
+   ctx.lineTo(-25, 25);
+   ctx.closePath();
+   ctx.fill();
+  }
+  function dot(ctx) {
+   ctx.save();
+   ctx.fillStyle = "black";
+   ctx.fillRect(-2, -2, 4, 4);
+   ctx.restore();
+  }
+
+  function draw() {
+   var ctx = document.getElementById('myCanvas').getContext("2d");
+   // note that all other translates are relative to this
+   // one
+   ctx.translate(100, 100);
+
+   ctx.save();
+   //ctx.translate(0, 0); // unnecessary
+   drawBowtie(ctx, "red");
+   dot(ctx);
+   ctx.restore();
+
+   ctx.save();
+   ctx.translate(85, 0);
+   ctx.rotate(45 * Math.PI / 180);
+   drawBowtie(ctx, "green");
+   dot(ctx);
+   ctx.restore();
+   ctx.save();
+   ctx.translate(0, 85);
+   ctx.rotate(135 * Math.PI / 180);
+   drawBowtie(ctx, "blue");
+   dot(ctx);
+   ctx.restore();
+
+   ctx.save();
+   ctx.translate(85, 85);
+   ctx.rotate(90 * Math.PI / 180);
+   drawBowtie(ctx, "yellow");
+   dot(ctx);
+   ctx.restore();
+  }
+  window.onload=function(){
+   draw();
+  }
+ </script>
+ <title>canvas对象的translate方法和rotate方法 - 何问起</title>
+</head>
+<body>
+<div id="pw_body" style="width:100%;height:100%">
+ <canvas id="myCanvas" width="300" height="300"></canvas>
+</div>
+</body>
+</html>

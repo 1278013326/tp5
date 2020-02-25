@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js操作css实现动画_何问起</title>
+    <script>
+        window.onload=function(){
+            var arr=[-45,60,-75,90];
+            var i=0;
+            box.onclick=function(){
+                var ready=false;
+                i++;
+                var oH=document.getElementsByTagName('head')[0];
+                var oS=document.createElement('style');
+                oH.appendChild(oS);
+                oS.innerHTML=
+                    '@keyframes rotate{'+
+                    '0%{'+
+                    'transform: rotate('+arr[i%4]+'deg);'+
+                    '}'+
+                    '100%{'+
+                    'transform: rotate(-'+arr[i%4]+'deg);'+
+                    '}'+
+                    '}';
+                box.style.animation='1s rotate linear';
+                box.addEventListener('animationend',function(){
+                    if(ready)return;
+                    ready=true;
+                    document.getElementsByTagName('head')[0].removeChild(oS);
+                },false);
+                console.log(oS.innerHTML);
+            };
+
+        };
+    </script>
+</head>
+<body>请点击方块
+<div id="box" style="background:red; width:100px; height:100px; margin:50px auto;"></div>
+</body>
+</html>

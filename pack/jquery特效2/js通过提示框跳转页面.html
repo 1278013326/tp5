@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>何问起</title>
+</head>
+<body>
+<script>
+    window.onload = function(){    //设置当页面加载时执行
+        var btn =document.getElementsByTagName("button")[0] //获取btn元素
+        btn.onclick = function(){    //给button加上一个点击事件
+            var answer = confirm("是否想游览何问起")   //把确认框赋值给answer
+            if(answer)    //判断是否点击确定
+                window.location ="http://hovertree.com/" //确定的话游览器自身跳转
+        }
+
+    }
+</script>
+<button>点击跳转</button>
+</body>
+</html>

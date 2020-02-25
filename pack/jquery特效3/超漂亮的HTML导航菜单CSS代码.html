@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>超漂亮的HTML导航菜单CSS代码 - 何问起</title><base target="_blank" />
+    <style>
+        #top {
+            display: block;
+            text-align: left;
+            height: 105px;
+            position: relative;
+            z-index: 0;
+        }
+
+        .m {
+            margin: 0 auto;
+            width: 970px;
+        }
+
+        body {
+            font-size: 12px;
+        }
+
+        a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        a:link {
+            text-decoration: none;
+        }
+        /* Download by http://hovertree.com*/
+        a.blue:link, a.blue:visited {
+            color: #014cc9;
+            text-decoration: none;
+        }
+
+        a.blue:hover, a.blue:active {
+            color: #014cc9;
+            text-decoration: underline;
+        }
+
+        a.org:link, a.org:visited {
+            color: #ff4e00;
+            text-decoration: none;
+        }
+
+        a:hover, a:active, a.org:hover, a.org:active {
+            color: #ff4e00;
+            text-decoration: underline;
+        }
+
+        #navpart {
+            background: url(http://hovertree.com/hvtimg/bjafjb/6hcuxj1x.gif) repeat-x center top;
+            height: 105px;
+            width: 950px;
+            z-index: 0;
+            margin-top: 0;
+            margin-right: auto;
+            margin-bottom: 0;
+            margin-left: auto;
+            clear: both;
+            position: relative;
+        }
+
+        #navpart .sideleft {
+            background: url(http://hovertree.com/hvtimg/bjafjb/6hcuxj1x.gif) no-repeat left bottom;
+            float: left;
+            height: 105px;
+            width: 6px;
+        }
+
+        #navpart .sideright {
+            background: url(http://hovertree.com/hvtimg/bjafjb/6hcuxj1x.gif) no-repeat right bottom;
+            float: right;
+            height: 105px;
+            width: 6px;
+        }
+
+        #navmenubar {
+            height: 32px;
+            float: left;
+            display: inline;
+            margin: 0 -6px;
+            width: 100%;
+            position: relative;
+            z-index: 3;
+            top: 0;
+        }
+
+        #hot {
+            background: url(http://hovertree.com/hvtimg/201508/7qmwfe9p.png) no-repeat left top;
+            height: 21px;
+            width: 19px;
+            position: absolute;
+            top: -5px;
+            right: 2px;
+            z-index: 666;
+            background:black;
+        }
+
+        #navmenubar .sideleft {
+            background: url(http://hovertree.com/hvtimg/bjafjb/ay73nxk5.gif) no-repeat left bottom;
+            float: left;
+            height: 32px;
+            width: 6px;
+            display: inline;
+            margin: 0 0 0 8px;
+        }
+
+        #navmenubar .sideright {
+            background: url(http://hovertree.com/hvtimg/bjafjb/ay73nxk5.gif) no-repeat right bottom;
+            float: left;
+            height: 32px;
+            width: 6px;
+            display: inline;
+            margin: 0 4px 0 -2px;
+        }
+        /* NAVMENU */
+        #navmenubar .navmenu {
+            background: url(http://hovertree.com/hvtimg/bjafjb/ay73nxk5.gif) repeat-x center top;
+            height: 32px;
+            padding: 0;
+            margin: 0;
+            float: left;
+            display: inline;
+        }
+
+        #navmenubar .navmenu li {
+            float: left;
+            white-space: nowrap;
+            margin: 0px;
+            padding: 0px;
+            display: inline;
+        }
+
+        #navmenubar .navmenu li a {
+            background: url(http://hovertree.com/hvtimg/bjafjb/d46iuj2w.gif) no-repeat 0 0;
+            width: 80px;
+            padding: 7px 2px 5px 0;
+            float: left;
+            line-height: 20px;
+            height: 20px;
+            text-align: center;
+        }
+
+        #navmenubar .navmenu li a:hover {
+            background-position: 0 -32px;
+            color: #602800;
+            text-decoration: none;
+            padding: 8px 2px 4px 0;
+        }
+
+        #navmenubar .navmenu .current a, #navmenubar .navmenu .current a:hover {
+            background: url(http://hovertree.com/hvtimg/bjafjb/d46iuj2w.gif) no-repeat 0 -64px;
+            font-weight: 600;
+            color: #FFF;
+            font-size: 14px;
+            padding: 7px 2px 5px 0;
+        }
+
+        #top #navpart .content {
+            margin-top: 40px;
+            margin-right: auto;
+            margin-bottom: 0px;
+            margin-left: auto;
+            width: 900px;
+            height: auto;
+            color: white;
+        }
+
+        #top #navpart .content a {
+            color: white;
+            display: inline-block;
+            margin-top: 0px;
+            height: 30px;
+            border: 0px solid white;
+            line-height: 30px;
+            padding: 10px;
+        }
+
+        .clear {
+            clear: both;
+            display: block;
+            font: 0px/0 sans-serif;
+            height: 0px;
+            overflow: hidden;
+        }
+    </style>
+
+</head>
+<body>
+<div id="top" class="m">
+    <div id="navpart">
+        <div class="sideleft"></div>
+        <div class="sideright"></div>
+        <!--NavMenu-->
+        <div id="navmenubar">
+            <div class="sideleft"></div>
+            <ul class="navmenu">
+                <li class="current"><a href="http://hovertree.com" target="_top" title="首页">何问起</a></li>
+                <li><a href="http://hovertree.com/"><span>编程资源</span></a></li>
+                <li><a href="http://hovertree.com/code/jquery/1ow9s9cv.htm"><span>自适应菜单</span></a></li>
+            </ul>
+            <div class="sideright"></div>
+            <div class="sideleft"></div>
+            <ul class="navmenu">
+                <li><a href="http://tool.hovertree.com"><span>工具</span></a></li>
+                <li><a href="http://hovertree.com/code/"><span>代码</span></a></li>
+                <li><a href="http://keleyi.com"><span>jQuery教程</span></a></li>
+                <li><a href="http://hovertree.com/tiku/"><span>在线题库</span></a></li>
+            </ul>
+            <div class="sideright"></div>
+            <div>
+                <div class="content">
+                    <a href="http://hovertree.com/code/texiao/ks63r6aq.htm" target="_blank">特效代码</a> <a href="http://hovertree.com/ziyuan/js/" target="_blank">JS运算符优先级</a>
+                    <a href="http://hovertree.com/" target="_blank">特效代码</a> <a href="http://hovertree.com/" target="_blank">特效代码</a> <a href="http://hovertree.com/" target="_blank">特效代码</a><a href="http://hovertree.com/hvtart/bjae/e4pya1x0.htm" target="_blank">.NET正则表达式</a>
+                    <a href="http://hovertree.com/" target="_blank">特效代码</a> <a href="http://keleyi.com/ziliao/googlejavascriptstyle.htm" target="_blank">谷歌JS风格</a> <a href="http://hovertree.com/" target="_blank">特效代码</a> <a href="http://hovertree.com/" target="_blank">特效代码</a> <a href="http://hovertree.com/h/bjaf/nebj8df9.htm" target="_blank">js实现异步循环</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>
+<div style="margin-top:50px"><a href="http://hovertree.com/texiao/css/21/">单独页面查看</a>
+    <a href="http://hovertree.com/code/texiao/ks63r6aq.htm">复制代码</a>
+</div>
+</body>
+</html>
+

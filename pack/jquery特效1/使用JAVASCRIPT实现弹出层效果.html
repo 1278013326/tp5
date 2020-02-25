@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>使用JAVASCRIPT实现弹出层效果_何问起</title>
+    <meta charset="utf-8">
+</head>
+<body>
+<a href="http://hovertree.com/">何问起</a>
+<button type="button" id="open">打开弹出层</button>
+<div id="cover" style="display: none;position: fixed;width: 100%;height: 100%;top:0px;left:0px;background: gray;">
+    <!-- 通过遮罩层遮住背景 -->
+    <div style="background: lightblue;border:1px solid green;" id="toast">
+        <!-- 设置display属性为none以隐藏内容             -->
+        <p>这里是弹出层内容</p>
+        <button type="button" id="close">关闭弹出层</button>
+    </div>
+</div>
+<script type="text/javascript">
+    var toast = document.getElementById("toast");
+    var cover = document.getElementById("cover");
+    document.getElementById("open").onclick = function(e){         //  <!--    定义点击事件显示隐藏内容          -->
+        cover.style.display = "block";
+        toast.style.position = "fixed";
+        var winWidth = window.innerWidth;
+        var winHeight = window.innerHeight;
+        var targetWidth = toast.offsetWidth;
+        var targetHeight = toast.offsetHeight;
+        toast.style.top = (winHeight - targetHeight) / 2 + "px";
+        toast.style.left = (winWidth - targetWidth) / 2 + "px";
+    }
+    document.getElementById("close").onclick = function(e){              // <!--      将显示的内容再次隐藏  何问起        -->
+        cover.style.display = "none";
+    }
+</script>
+</body>
+</html>

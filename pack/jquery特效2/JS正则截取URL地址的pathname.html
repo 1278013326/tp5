@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>JS截取URL地址 - 何问起</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+</head>
+<body>
+<h2>JS截取URL地址</h2>
+<script>
+    var url = "http://run.hovertree.com:80/main/main.aspx"
+    document.writeln("原来地址：<br />" + url + "<br />截取后：<br />");
+    document.writeln(url.replace(/http:\/\/\S+?\//g, ""))
+
+    document.write("<br />本页地址：<br />"+location.href)
+    document.writeln("<br />截取本页地址：<br />")
+    document.writeln(location.pathname);
+</script>
+<br /><br />
+By 何问起
+</body>
+</html>

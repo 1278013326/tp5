@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>CSS3正方形翻转动画 - 何问起</title>
+    <meta charset="utf-8" />
+    <style>
+        .hewenqicube--ani {
+            -webkit-animation: rot 4s linear infinite;
+        }
+        @-webkit-keyframes rot {
+            to {  -webkit-transform: rotateY(-330deg) rotateX(370deg); }
+        }
+        .hewenqicube{border:darkgreen solid 2px;width:200px;height:200px;background-color:silver;}
+        #hovertreecom{width:400px;margin:10px auto;}
+    </style>
+</head>
+<body>
+
+<div id="hovertreecom">
+    <h2>CSS3正方形翻转动画 by 何问起</h2>
+    <div class='hewenqicube hewenqicube--ani'>
+        正方形翻转动画，请使用Chrome浏览器 。 http://hovertree.com
+        <a href="http://hovertree.com">何问起</a>
+    </div>
+</div>
+</body>
+</html>

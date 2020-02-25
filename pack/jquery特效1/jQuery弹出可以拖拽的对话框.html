@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>拖拽的具体实现</title>
+	<script id="jquery_144" type="text/javascript" class="library" src="http://down.hovertree.com/jquery/jquery-1.4.4.min.js"></script>
+</head>
+<body>
+<input type="button" onclick="cuihuan.test.drag.init()" value="点击唤醒拖拽"/>
+</body>
+</html>
+<style> #dialog_header {
+	padding: 5px 10px;
+	height: 25px;
+	border-bottom: 1px solid #ddd;
+	border-radius: 5px;
+	background: #485aaa;
+	padding-left: 17px;
+	text-align: left;
+	bottom: 220px;
+	right: 5px;
+	-moz-user-select: none;
+	position: fixed;
+	cursor: move;
+	*position: static;
+	width: 348px;
+	*width: 348px;
+}
+
+#close_x {
+	margin-top: 2px;
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 18px;
+	color: #000000;
+	text-shadow: 0 1px 0 #ffffff;
+	cursor: pointer;
+	float: right
+}
+
+#right_dialog {
+	border-radius: 5px;
+	position: fixed;
+	right: 5px;
+	bottom: 5px;
+	width: 376px;
+	height: 251px;
+	background-color: #aaaaaa;
+	z-index: 5010;
+}</style>
+<script>    var cuihuan = cuihuan || {};
+cuihuan.test = cuihuan.test || {};
+cuihuan.test.drag = {
+	init: function () {
+		cuihuan.test.drag.create_dialog();
+		cuihuan.test.drag.init_close();
+		cuihuan.test.drag.init_drag();
+	},
+	create_dialog: function () {
+		var dialog_html = "";
+		dialog_html += '<div class="dialog_header" id="dialog_header" unselectable="on" onselectstart="return false;">' +
+				'<a class="close"  id="close_x">' + "×" + '</a></div>';
+		var drawToolNode = document.createElement("div");
+		drawToolNode.id = "right_dialog";
+		drawToolNode.className = "right_dialog";
+		drawToolNode.innerHTML = dialog_html;
+		document.body.appendChild(drawToolNode);
+	},
+	init_close: function () {
+		//绑定删除操作
+		$("#close_x").live("click", function () {
+			$("#right_dialog").remove();
+		})
+
+	},
+	init_drag: function () {
+		//获取对象，传入的是对象，直接用，传入的是id，取到对象
+		var getTarg = function (id) {
+			return "string" == typeof id ? document.getElementById(id) : id;
+		};
+
+		//基于面向对象的，构造了一个原型方法，function是返回的函数，argument是调用的对象，默认调用的函数
+		var Class = {
+			create: function () {
+				return function () {
+					this.initialize.apply(this, arguments);
+				}
+			}
+		};
+
+		//做事件监听
+		var BindAsEventListener = function (object, fun) {
+			return function (event) {
+				return fun.call(object, (event || window.event));
+			}
+		};
+
+		//这里是为了浏览器的兼容性，主要兼容ie
+		function addEventHandler(oTarget, sEventType, fnHandler) {
+			if (oTarget.addEventListener) {
+				oTarget.addEventListener(sEventType, fnHandler, false);
+			} else if (oTarget.attachEvent) {
+				oTarget.attachEvent("on" + sEventType, fnHandler);
+			} else {
+				oTarget["on" + sEventType] = fnHandler;
+			}
+		}
+
+		function removeEventHandler(oTarget, sEventType, fnHandler) {
+			if (oTarget.removeEventListener) {
+				oTarget.removeEventListener(sEventType, fnHandler, false);
+			} else if (oTarget.detachEvent) {
+				oTarget.detachEvent("on" + sEventType, fnHandler);
+			} else {
+				oTarget["on" + sEventType] = null;
+			}
+		}
+
+		cuihuan.test.drag.SimpleDrag = Class.create();//赋予原型对象
+		cuihuan.test.drag.SimpleDrag.prototype = {     //在里面实现原型方法
+			initialize: function (drag, bedrag) {
+				this.drag = getTarg(drag);
+				this.beDrag = getTarg(bedrag);
+				this._x = this._y = 0;            //初始位置
+				this._fM = BindAsEventListener(this, this.move);     //绑定拖拽操作
+				this._fS = BindAsEventListener(this, this.stop);     //绑定停止操作
+				addEventHandler(this.drag, "mousedown", BindAsEventListener(this, this.start)); //捕获开始拖拽的事件
+			},
+
+			start: function (oEvent) {
+				if (oEvent.preventDefault) {  //阻止事件本身的默认行为
+					oEvent.preventDefault();
+				} else {
+					oEvent.returnValue = false;  //兼容ie
+				}
+				this._x = oEvent.clientX - this.beDrag.offsetLeft;   //此处不用style.left  基于一是：兼容，而是防止没有
+				this._y = oEvent.clientY - this.beDrag.offsetTop;
+				addEventHandler(document, "mousemove", this._fM);
+				addEventHandler(document, "mouseup", this._fS);
+			},
+
+			move: function (oEvent) {
+				this.beDrag.style.left = oEvent.clientX - this._x + "px";
+				this.beDrag.style.top = oEvent.clientY - this._y + "px";
+				this.drag.style.left = oEvent.clientX - this._x + "px";
+				this.drag.style.top = oEvent.clientY - this._y + "px";
+			},
+
+			stop: function () {
+				removeEventHandler(document, "mousemove", this._fM);
+				removeEventHandler(document, "mouseup", this._fS);
+			}
+
+		};
+		new cuihuan.test.drag.SimpleDrag("dialog_header", "right_dialog");
+	}
+
+};
+</script>

@@ -1,0 +1,53 @@
+<!--
+css如何匹配第几个li元素并设置样式:
+如果有一个li元素列表，如果想设置指定位置li的样式。
+这个在以前可能需要稍微麻烦一些，比如在这个要设置的li元素上添加一个class或者id之类。
+但是上面的方式不够灵活，下面介绍一下如何通过伪类选择器实现此功能。
+代码实例:
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="http://hovertree.com/" />
+  <title>何问起</title>
+  <style type="text/css">
+    a{color:black;text-decoration:none}
+    #items{
+      width:900px;
+      height:auto;
+      margin:0 auto;
+      padding:5px 0;
+      clear:both;
+    }
+    #items ul, #items li{
+      list-style:none;
+    }
+    #items li{
+      width:500px;
+      height:28px;
+      text-align:left;
+      padding-left: 0px;
+      line-height:28px;
+      border-bottom:dashed 1px #CCC;
+    }
+    #items ul li:nth-child(2){color:red;}
+  </style>
+</head>
+<body>
+<div id="items">
+  <ul>
+    <li>何问起欢迎您，只有努力奋斗才会有美好的未来</li>
+    <li>没有任何人一开始就是高手，必须要好好学习</li>
+    <li>本站的url地址是hovertree.com</li>
+    <li>每一天都是新的，所以要好好真心当前时间</li>
+    <li><a href="http://hovertree.com/h/bjaf/selector_nth-child.htm" target="_blank">div css教程里面有大量详实的代码</a></li>
+  </ul>
+</div>
+</body>
+</html>
+<!--
+上面的代码可以将第二个li元素的字体颜色设置为红色。
+:nth-child可以参阅CSS的伪类选择符E:nth-child(n)一章节。http://hovertree.com/h/bjaf/selector_nth-child.htm
+本文地址：http://hovertree.com/code/dev/jt733f0m.htm
+-->

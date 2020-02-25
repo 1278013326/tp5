@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>最简单的tab切换 - 何问起</title>
+  <style>
+    body { cursor:default; -webkit-text-size-adjust:none; font-size:12px; font-family:Arial; background:#FFF; }
+    .clear { zoom:1; }
+    .clear:after { visibility:hidden; display:block; font-size:0; content:"1"; clear:both; height:0; }
+    .main { width:500px; margin:20px auto; }
+    .btn span { width:35px; text-align:center; color:#fff; background:#f00; cursor:pointer; margin:0 5px; display:block; float:left; }
+    .con { display:none; border:#033 1px solid; height:100px; width:200px; }
+  </style>
+</head>
+<body>
+
+<div class="main">
+  <div class="btn clear"><span>1</span><span>2</span><span>3</span></div>
+  <div class="con">第一个<br /> </div>
+  <div class="con">第二个<br /> </div>
+  <div class="con">第三个<br /> </div>
+</div>
+<div>何问起提示：请点击红色部分</div>
+</body>
+</html>
+<script src="http://down.hovertree.com/jquery/jquery-1.12.3.min.js"></script>
+<script>
+  $(".con").eq(0).show();
+  $(".btn span").click(function(){
+    var num =$(".btn span").index(this);
+    $(".con").hide();
+    $(".con").eq(num).show().slblings().hide();
+  })
+</script>

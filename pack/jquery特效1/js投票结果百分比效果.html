@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>js投票效果_何问起</title>
+    <style>
+        #dakuang {
+            width: 1000px;
+            height: 30px;
+        }
+
+        #left,
+        #right {
+            height: 100%;
+            float: left;
+        }
+
+        #left {
+            background-color: red;
+            /*width: 335px;*/
+        }
+
+        #right {
+            background-color: cadetblue;
+            /* width: 165px;*/
+        }
+    </style>
+</head>
+
+<body>
+<div id="dakuang">
+    <div id="left"></div>
+    <div id="right"></div>
+</div>
+<input type="button" value="何问起" id="btn1" />
+<input type="button" value="柯乐义" id="btn2" />
+<script>
+    var left, right, btn1, btn2;
+    var result = 500;
+    var r1 = 335;
+    window.onload = function() {
+        left = document.getElementById("left");
+        right = document.getElementById("right");
+        btn1 = document.getElementById("btn1");
+        btn2 = document.getElementById("btn2");
+
+        btn1.onclick = function() {
+            result++;
+            r1++;
+            suan();
+        }
+        btn2.onclick = function() {
+            result++;
+            suan();
+
+        }
+        suan();
+
+        function suan() {
+            var b1 = r1 / result;
+            var num1 = Math.round(b1 * 100);
+            left.innerHTML = "0." + num1;
+            right.innerHTML = "0." + (100 - num1);
+            var div = document.getElementById("dakuang");
+//	获取大div的宽度
+            var width = div.offsetWidth;
+//	把div左的宽度算出来
+            var leftWidth = width * b1;
+            left.style.width = leftWidth * b1 + "px";
+            right.style.width = (width - leftWidth) + "px";
+
+        }
+    }
+</script>
+</body>
+
+</html>

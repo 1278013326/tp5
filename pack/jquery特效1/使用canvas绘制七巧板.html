@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1" />
+ <title>使用canvas绘制七巧板_何问起</title>
+</head>
+<body>
+<canvas id="canvas" style="border: 1px solid black;display: block;margin: 50px auto;">
+</canvas>
+</body>
+<script type="text/javascript">
+ //定义一个数组变量，分别代表七巧板的七块
+ //每一部分是一个类的对象，每一部分包含一个p，
+ //p也是一个数组，分别代表七巧板的每一块的顶点坐标
+ //color属性代表每一块的颜色 by 何问起
+ var tangram = [{
+  p: [{
+   x: 0,
+   y: 0
+  }, {
+   x: 800,
+   y: 0
+  }, {
+   x: 400,
+   y: 400
+  }],
+  color : "red"
+ }, {
+  p: [{
+   x: 0,
+   y: 0
+  }, {
+   x: 400,
+   y: 400
+  }, {
+   x: 0,
+   y: 800
+  }],
+  color : "blue"
+ }, {
+  p: [{
+   x: 800,
+   y: 0
+  }, {
+   x: 800,
+   y: 400
+  }, {
+   x: 600,
+   y: 600
+  }, {
+   x: 600,
+   y: 200
+  }],
+  color : "yellow"
+ }, {
+  p: [{
+   x: 600,
+   y: 200
+  }, {
+   x: 600,
+   y: 600
+  }, {
+   x: 400,
+   y: 400
+  }],
+  color : "pink"
+ }, {
+  p: [{
+   x: 400,
+   y: 400
+  }, {
+   x: 600,
+   y: 600
+  }, {
+   x: 400,
+   y: 800
+  }, {
+   x: 200,
+   y: 600
+  }],
+  color : "gray"
+ }, {
+  p: [{
+   x: 200,
+   y: 600
+  }, {
+   x: 400,
+   y: 800
+  }, {
+   x: 0,
+   y: 800
+  }],
+  color : "green"
+ }, {
+  p: [{
+   x: 800,
+   y: 400
+  }, {
+   x: 800,
+   y: 800
+  }, {
+   x: 400,
+   y: 800
+  }],
+  color : "orange"
+ }]
+ window.onload = function() {
+  //获取Canvas
+  var canvas = document.getElementById("canvas");
+  //定义宽高
+  canvas.width = 800;
+  canvas.height = 800;
+  //获取context
+  var context = canvas.getContext("2d");
+  //遍历七巧板数组 hovertree.com
+  for(var i = 0; i < tangram.length; i++)
+          //每次遍历调用函数draw()
+   draw(tangram[i], context);
+  //draw()函数传入两个参数，第一个是七巧板中的一块，
+  //第二个是我们获得的绘图的上下文环境context
+ }
+
+ function draw(piece, cxt) {
+  cxt.beginPath();
+  //用moveTo移动到顶点坐标的第一个坐标的位置
+  cxt.moveTo(piece.p[0].x, piece.p[0].y);
+  //使用循环顺次绘制路径
+  for(var i = 1; i < piece.p.length; i++)
+   cxt.lineTo(piece.p[i].x, piece.p[i].y);
+  cxt.closePath();
+  //定义颜色，调用piece.color
+  cxt.fillStyle = piece.color;
+  cxt.fill();
+  //给七巧板的每一块加一个外边框
+  cxt.strokeStyle="black";
+  cxt.lineWidth=3;
+  cxt.stroke();
+
+ }
+</script>
+
+</html>

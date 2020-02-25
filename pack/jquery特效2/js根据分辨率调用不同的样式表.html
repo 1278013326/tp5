@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>js根据分辨率调用不同的样式表 - 何问起</title><base target="_blank"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" id="HoverTreeCss" />
+    <style>a{color:white}</style>
+</head>
+<body>
+<div id="HewenqiInfo"></div>
+<script>
+    var h_screenWidth = screen.width;
+    var h_hoverTreeCss;
+    if (h_screenWidth < 481) {
+        h_hoverTreeCss = "http://hovertree.com/texiao/js/16/hewenqi480.css";
+    }
+    else
+    if (screen.width < 601) {
+        h_hoverTreeCss = "http://hovertree.com/texiao/js/16/hewenqi600.css";
+    }
+    else
+    if (screen.width < 801) {
+        h_hoverTreeCss = "http://hovertree.com/texiao/js/16/hewenqi800.css";
+
+    }
+    else if (screen.width < 1025) {
+        h_hoverTreeCss = "http://hovertree.com/texiao/js/16/hewenqi1024.css";
+
+    }
+    else if (screen.width < 1281) {
+        h_hoverTreeCss = "http://hovertree.com/texiao/js/16/hewenqi1280.css";
+
+    }
+    else if (screen.width < 1367) {
+        h_hoverTreeCss = "http://hovertree.com/texiao/js/16/hewenqi1366.css";
+
+    }
+    else {
+        h_hoverTreeCss = "http://hovertree.com/texiao/js/16/hewenqibig.css";
+
+    }
+    document.getElementById("HoverTreeCss").href = h_hoverTreeCss;
+    document.getElementById("HewenqiInfo").innerHTML = "你的分辨率是：" + h_screenWidth + "，何问起自动为你处理为最佳显示模式。";
+
+</script><div><a href="http://hoverteee.com">首页</a> <a href="http://hoverteee.com/texiao/">特效</a> <a href="http://hovertree.com/code/javascript/pwl4bhoi.htm">代码</a> <a href="http://hovertree.com/texiao/js/16/" target="_blank">查看效果</a> <a href="http://hovertree.com/code/javascript/ik698q83.htm">复制代码</a>  <a href="http://hovertree.com/code/css/5ks0mbms.htm">CSS3实现</a></div>
+</body>
+</html>

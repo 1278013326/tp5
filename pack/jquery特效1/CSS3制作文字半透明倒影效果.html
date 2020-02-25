@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html><head>
+    <style>
+        .content h3{
+            position:relative;
+            float:left;
+            opacity:0.7;
+            font:40px/50px 'Microsoft yahei';
+        }
+
+        .content h3:before{
+            content:attr(title);
+            position:absolute;
+            z-index:1;
+            top:100%;
+            left:0;
+            height:100%;
+            width:100%;
+            -moz-transform:scaleY(-1);
+            -webkit-transform:scaleY(-1);
+        }
+
+        .content h3:after{
+            content:'';
+            position:absolute;
+            z-index:2;
+            top:100%;
+            left:0;
+            height:100%;
+            width:100%;
+            background:-moz-linear-gradient(center top,rgba(255,255,255,0),rgba(255,255,255,1));
+            background:-webkit-gradient(linear, center top, center bottom, from(rgba(255,255,255,0)), to(rgba(255,255,255,1)));/*其他几个被省略了-_-!*/
+        }
+
+        .content .next{
+            clear:both;
+            padding:60px;
+        }
+    </style><title>CSS3制作文字半透明倒影效果 - 何问起</title>
+</head><body>
+
+<div class="content">
+    <h3 title="何问起 hovertree.com">何问起 hovertree.com</h3>
+    <div class="next"><!--其他内容--></div>
+</div>
+</body></html>

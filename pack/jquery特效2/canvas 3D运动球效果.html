@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>canvas</title>
+    <style type="text/css">
+        #canvas{
+            background-color: #eeeeee;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas" width="500" height="500"></canvas>
+<script type="text/javascript">
+    window.onload = function(){
+        var canvas = document.getElementById("canvas");
+        var cobj = canvas.getContext("2d");
+
+        var focusLen = 300;
+        var x_3d = 0;
+        var y_3d = 0;
+        var z_3d = 0;
+        var z_speed = 10;
+
+        cobj.translate(250,250);
+        setInterval(function(){
+            cobj.clearRect(-250,-250,500,500);
+            z_3d += z_speed;
+            if(z_3d>600 || z_3d<=-260){
+                z_speed*=-1;
+            }
+            var scales = focusLen/(focusLen+z_3d);
+            var x = x_3d*scales;
+            var y = y_3d*scales;
+            cobj.save();
+            cobj.translate(x,y);
+            cobj.scale(scales,scales);
+            cobj.beginPath();
+            var colorObj = cobj.createRadialGradient(3,3,0,0,0,15);
+            colorObj.addColorStop(0,"#cbc0f3");
+            colorObj.addColorStop(1,"#06198b");
+            cobj.fillStyle = colorObj;
+            cobj.arc(0,0,15,0,2*Math.PI);
+            cobj.fill();
+            cobj.restore();
+        },20);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<a href="javascript:;" title="收藏本页" id="hewenqi" target="_self">收藏本页</a>
+
+<script type="text/javascript" src="http://hovertree.com/ziyuan/jquery/jquery-1.12.0.min.js"></script>
+<script type="text/javascript">
+
+    function addfavor(url, title) {
+        var ua = navigator.userAgent.toLowerCase();
+        if (ua.indexOf("msie 8") > -1) {
+            external.AddToFavoritesBar(url, title, ''); //IE8
+        } else {
+            try {
+                window.external.addFavorite(url, title);
+            } catch (e) {
+                try {
+                    window.sidebar.addPanel(title, url, ''); //firefox
+                } catch (e) {
+                    alert("加入收藏失败，请使用键盘Ctrl+D进行添加");
+                }
+            }
+        }
+
+    }
+
+    $('#hewenqi').on("click", function () { addfavor(location.href,document.title); })
+</script>

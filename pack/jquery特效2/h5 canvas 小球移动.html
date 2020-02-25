@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="http://hovertree.com/ziyuan/jquery/jquery-1.12.1.min.js"></script>
+    <script type="text/javascript">
+
+
+        $().ready(function () {
+            var d=$("#cans").get(0).getContext("2d");
+            var dir=0;
+            var width=500;
+            var height=200;
+            var exp=1;  //像素移动的位置，正数向下，负数向上
+            function test(){
+//                $("#res").get(0).innerText+=123;
+                d.clearRect(0,0,width,height)//清除原始图形
+//                画圆
+                d.fillStyle="red";
+                d.beginPath(); // 从新开始画，防止 冲突重叠
+                d.arc(50,dir,20,0,Math.PI*2,true); // x y 坐标 半径130
+//                d.arc(50,dir,dir,0,Math.PI*2,true); //  半径为dir 也慢慢变大
+                d.closePath(); // 结束画布，防止冲突重叠
+                d.fill(); // 结束渲染
+                dir+=exp;
+//                上下移动
+                if(dir==0 || dir==height){
+                    exp*=-1;
+                }
+            }
+            var tt;
+            $("#bt1").bind('click', function () {
+                tt=setInterval(test,20);
+            });
+            $("#bt2").bind('click', function () {
+                clearInterval(tt);
+            })
+        });
+
+    </script>
+</head>
+<body>
+<canvas id="cans" width="500" height="200">浏览器不支持canvas</canvas>
+<div id="res"></div>
+<button id="bt1">开始</button>
+<button id="bt2">停止</button>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>何问起</title>
+    <meta name="description" content="canvas画简单电路图 by hovertree.com" />
+</head>
+<body>
+<canvas id="canHewenqi" width="500" height="300" style="margin: 20px auto"></canvas>
+
+<script>
+    var canvas = document.getElementById("canHewenqi");
+    var cxt = canvas.getContext("2d");
+
+    cxt.moveTo(10,10);
+    cxt.lineTo(100,10);
+    cxt.stroke();
+    cxt.beginPath();
+    cxt.moveTo(100,10);
+    cxt.lineTo(100,0);
+    cxt.lineTo(150,0);
+    cxt.lineTo(150,20);
+    cxt.lineTo(100,20);
+    cxt.closePath();
+    cxt.moveTo(150,10);
+    cxt.lineTo(250,10);
+    cxt.lineTo(250,100);
+    cxt.stroke();
+    cxt.moveTo(225,100);
+    cxt.lineTo(275,100);
+    cxt.stroke();
+    cxt.moveTo(225,115);
+    cxt.lineTo(275,115);
+    cxt.stroke();
+    cxt.moveTo(250,115);
+    cxt.lineTo(250,160);
+    cxt.stroke();
+    cxt.moveTo(250,160);
+    cxt.lineTo(150,160);
+    cxt.stroke();
+    cxt.arc(130,160,20,0,360,false);
+    cxt.stroke();
+    cxt.moveTo(150,160);
+    cxt.lineTo(10,160);
+    cxt.lineTo(10,10);
+    cxt.stroke();
+
+
+</script>
+<div>canvas画简单电路图 by 何问起</div>
+</body>
+</html>

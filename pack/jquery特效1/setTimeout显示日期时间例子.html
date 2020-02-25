@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>setTimeout显示日期时间例子 - 何问起</title><base target="_blank" />
+    <meta charset="utf-8" /><style>a{color:blue}</style>
+</head>
+<body>
+<div id="date"></div>
+
+<script>
+    function getdates()
+    {
+        var w_array=new Array("星期天","星期一","星期二","星期三","星期四","星期五","星期六");
+        var d=new Date();
+        var year=d.getFullYear();
+        var month=d.getMonth()+1;
+        var day=d.getDate();
+        var week=d.getDay();
+        var h=d.getHours();
+        var mins=d.getMinutes();
+        var s=d.getSeconds();
+
+        if(month<10) month="0" + month
+        if(day<10) month="0" + day
+        if(h<10) h="0" + h
+        if(mins<10) mins="0" + mins
+        if(s<10) s="0" + s
+
+        var shows="现在时间是： <span>" + year + "-" + month + "-" + day + " " + h + ":" + mins +  ":" + s + " " + w_array[week] + "</span>";
+        document.getElementById("date").innerHTML=shows;
+        setTimeout("getdates()",1000);
+    }
+    getdates();
+</script>
+<div><br /><a href="http://hovertree.com">首页</a><br />
+    <a href="hovertree.com/h/bjaf/vne8jtf9.htm">setTimout( , 0) 详解</a>
+    <br /><a href="hovertree.com/h/bjaf/1nk9esde.htm">setInterval()与setTimeout()</a>
+    <br /><a href="hovertree.com/h/bjaf/5ccgnul6.htm">关于setTimeout的妙用</a>
+</div>
+</body>
+</html>

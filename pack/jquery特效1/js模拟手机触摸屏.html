@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>js模拟手机触摸屏_何问起</title>
+    <style>
+        *{padding:0;margin:0;list-style:none;}
+        #box{width:600px; height:400px; border:1px solid #000; margin:50px auto; position:relative;}
+        #iph{width:200px; height:200px; border:1px solid #ccc; position:absolute; top:50%; left:370px; margin-top:-100px; overflow:hidden;}
+        #wrap{position:absolute;top:0;left:0; width:800px; height:200px;}
+        #wrap li{float:left; width:200px; height:200px;}
+    </style>
+
+    <script>
+        window.onload=function(){
+            var oW=document.getElementById('wrap');
+            var oBox=document.getElementById('box');
+            var aLi=oW.children;
+            var count=0;
+            oW.onmousedown=function(ev){
+                clearInterval(oW.timer);
+                var oEvent=ev||event;
+                var start=oEvent.clientX;
+                var disX=oEvent.clientX-oW.offsetLeft;
+                document.onmousemove=function(ev){
+                    var oEvent=ev||event;
+                    var l=oEvent.clientX-disX;
+                    oW.style.left=l+'px';
+                };
+                document.onmouseup=function(ev){
+                    var oEvent=ev || event;
+                    var end=oEvent.clientX;
+                    if(end-start>30){
+                        count--;
+                        if(count==-1){
+                            count=0;
+                        }
+                        move(oW,{left:-aLi[0].offsetWidth*count});
+                    }else if(end-start<-30){
+                        count++;
+                        if(count==aLi.length){
+                            count=aLi.length-1;
+                        }
+                        move(oW,{left:-aLi[0].offsetWidth*count});
+                    }else{
+                        move(oW,{left:-aLi[0].offsetWidth*count});
+                    }
+                    document.onmousemove=null;
+                    document.onmouseup=null;
+                };
+                return false;
+            };
+        };
+    </script>
+</head>
+
+<body>
+点击一下红色方块，然后左右移动
+<div id="box">
+    <div id="iph">
+        <ul id="wrap">
+            <li style="background:red;"></li>
+            <li style="background:yellow;"></li>
+            <li style="background:blue;"></li>
+            <li style="background:green;"></li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

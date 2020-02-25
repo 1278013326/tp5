@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>css3 flex示例</title>
+</head>
+<body>
+<div class="header">
+	<div class="header-content">受到网店的影响，服装店的生意逐渐有所下降，老板找何问起去谈，大概是准备跟上网购潮流，让何问起准备一下， 要在网上开网店，要为服装店建立网站。 何问起也没说自己经验不足，只说会积极准备。于是抓紧时间查找资料，学习练习。</div>
+	<div class="header-icon">右边右边右边右边右边右边右</div>
+</div>
+</body>
+</html>
+<style>.header {
+	height: 44px;
+	line-height: 44px;
+	background: #2ECC71;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	text-align: center;
+}
+.header-icon {
+	min-width: 250px;
+	border:1px solid red;
+	display: block;
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+}
+.header-content {
+	word-wrap: normal; /* for IE */
+	white-space:nowrap;/* 不换行 */
+	overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */
+	text-overflow:ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+}
+</style>
+

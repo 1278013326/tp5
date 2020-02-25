@@ -1,0 +1,20 @@
+<script language='javascript' type='text/javascript'>
+    var secs = 10; //倒计时的秒数
+    var URL;
+    function Load(url) {
+        URL = url;
+        for (var i = secs; i >= 0; i--) {
+            window.setTimeout('doUpdate(' + i + ')', (secs - i) * 1000);
+        }
+    }
+    function doUpdate(num) {
+        document.getElementById('ShowDiv').innerHTML = '您好您的商品已经购买成功，请等待工作人员的审核...<br><span style="color:red">' + num + '</span>秒后自动离开本页面';
+        if (num == 0) { window.location = URL; }
+    }
+</script>
+
+</head>
+<body>
+<script language="javascript" type="text/javascript">Load("http://hovertree.com"); </script>
+<div id="ShowDiv"></div>
+</body>
