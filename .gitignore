@@ -2,3 +2,9 @@
 composer.lock
 *.log
 thinkphp
+/runtime/
+/.settings/
+/composer.lock
+/.buildpath
+/.project
+/public/
