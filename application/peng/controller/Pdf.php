@@ -6,6 +6,9 @@ namespace app\peng\controller;
 
 class Pdf extends Base
 {
+    /**
+     * 有错误
+     */
     public function index() {
 
         import('tcpdf/tcpdf', EXTEND_PATH,'.php');

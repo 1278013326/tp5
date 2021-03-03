@@ -805,7 +805,7 @@ class Taobao extends TaobaoBase
     public function jingdong() {
         set_time_limit(0);
         $ret = array();
-        $url = 'https://item.jd.com/57609101732.html';
+        $url = 'https://item.jd.com/4651263.html';
 //        $cates = $_GPC['cate'];
 
         if (is_numeric($url)) {
